@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TableRow android:background="#D9D9D9"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="发音选择：" />
+
+        <TextView
+            android:id="@+id/tv_baidu_hanyu"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:text="百度汉语" />
+
+        <TextView
+            android:id="@+id/tv_xinhua_cidian"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="新华词典" />
+    </TableRow>
+</TableLayout>

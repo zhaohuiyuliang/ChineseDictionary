@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_back_r"
+    android:layout_width="fill_parent"
+    android:layout_height="55dp"
+    android:background="#D9D9D9">
+
+
+    <ImageView
+        android:id="@+id/title_back_img"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="0dp"
+        android:src="@drawable/ic_act_back" />
+
+    <TextView
+        android:id="@+id/tv_top_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/title_back_img"
+        android:gravity="center"
+        android:paddingLeft="5dp"
+        android:paddingRight="10dp"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/img_phone_search"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/phone_search"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/tv_collect"
+        android:layout_width="80dp"
+        android:layout_height="55dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="收藏"
+        android:gravity="center"
+        android:textSize="18dp"
+        android:visibility="gone" />
+
+
+
+</RelativeLayout>

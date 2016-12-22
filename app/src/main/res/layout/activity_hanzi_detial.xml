@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_hanzi"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="20dp"
+            android:src="@drawable/background_zi" />
+
+        <TextView
+            android:id="@+id/tv_hanzi_"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:text="临"
+            android:textColor="@color/colorBlack"
+            android:textSize="40dp" />
+
+        <TextView
+            android:id="@+id/tv_spelling_"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/image_hanzi"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/video"
+            android:gravity="center_vertical"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/tv_spelling_2"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/tv_spelling_"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/video"
+            android:gravity="center_vertical"
+            android:textSize="30dp"
+            android:visibility="gone" />
+
+
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_hanzi_"
+            android:weightSum="12">
+
+            <TextView
+                android:id="@+id/tv_base"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:text="基本解释"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tv_detail"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="6"
+                android:gravity="center"
+                android:text="详细解释"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tv_error_correction"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="4"
+                android:gravity="center"
+                android:text="纠错"
+                android:textSize="18dp"
+                android:visibility="gone"/>
+
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ll">
+
+            <TextView
+                android:id="@+id/tv_paraphrase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="50dp"
+                android:lineSpacingExtra="15dp"
+                android:focusableInTouchMode="false"
+                android:textSize="20dp" />
+        </ScrollView>
+    </RelativeLayout>
+</LinearLayout>

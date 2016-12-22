@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@color/colorTabBg"
+        android:visibility="gone"/>
+
+    <ListView
+        android:id="@+id/lview_home"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:divider="@color/colorWhite"
+        android:background="@color/colorTabBg"/>
+
+    <com.zi.dian.custom.view.ViewPagerHome
+        android:id="@+id/view_pager_home"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/lview_home"
+        android:nestedScrollingEnabled="false"/>
+
+
+</RelativeLayout>

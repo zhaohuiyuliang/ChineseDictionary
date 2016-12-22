@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_bar" />
+
+    <GridView
+        android:id="@+id/grid_view_zi"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.5"
+        android:divider="#7A7A7A"
+        android:dividerHeight="0.6dp"
+        android:numColumns="6"
+        android:verticalSpacing="10dp" />
+
+    <ListView
+        android:id="@+id/list_view_hanzi_and_stroke"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#ffffffff"
+        android:focusable="false" />
+</LinearLayout>
