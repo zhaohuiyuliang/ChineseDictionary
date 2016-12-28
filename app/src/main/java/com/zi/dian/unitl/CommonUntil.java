@@ -1,13 +1,9 @@
 package com.zi.dian.unitl;
 
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by wangliang on 6/17/16.
