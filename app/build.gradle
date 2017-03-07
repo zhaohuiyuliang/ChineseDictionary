@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "dian.zi.com.zidian"
@@ -11,10 +11,21 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+        release {
+            keyAlias 'chineseDic'
+            keyPassword '908070'
+            storeFile file('/Users/wangliang/key/keyChineseDic.jks')
+            storePassword '908070'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
+            // 移除无用的resource文件
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
