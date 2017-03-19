@@ -20,6 +20,7 @@ public class AdapterContent extends BaseAdapter {
     private List list;
     private Context mContext;
     private IModelContent modelContent;
+
     public AdapterContent(Context context, List list, IModelContent modelContent) {
         mContext = context;
         this.list = list;
@@ -33,30 +34,18 @@ public class AdapterContent extends BaseAdapter {
 
     @Override
     public int getCount() {
-        if (list != null) {
-            return list.size();
-        }
-        return 0;
+        return list != null ? list.size() : 0;
     }
 
     @Override
     public Object getItem(int position) {
-        if (list != null) {
-            return list.get(position);
-        }
-        return null;
+        return list != null ? list.get(position) : null;
     }
 
-    private int selectPosition = 0;
-
-    public void setPosition(int position) {
-        selectPosition = position;
-        notifyDataSetChanged();
-    }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
@@ -81,12 +70,12 @@ public class AdapterContent extends BaseAdapter {
         return convertView;
     }
 
-    class HoldView {
-        TextView tv_hanzi;
+    public interface IModelContent {
+        void setOnclickListener(String zi);
     }
 
-    public interface  IModelContent {
-        void setOnclickListener(String zi);
+    class HoldView {
+        TextView tv_hanzi;
     }
 
 }

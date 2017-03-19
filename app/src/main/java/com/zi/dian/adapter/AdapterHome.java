@@ -18,6 +18,7 @@ public class AdapterHome extends BaseAdapter {
     private List<String> list;
     private Context mContext;
     private IModelHome localModel;
+    private int selectPosition;
 
     public AdapterHome(Context context, IModelHome model, List<String> list) {
         mContext = context;
@@ -27,21 +28,13 @@ public class AdapterHome extends BaseAdapter {
 
     @Override
     public int getCount() {
-        if (list != null) {
-            return list.size();
-        }
-        return 0;
+        return list != null ? list.size() : 0;
     }
 
     @Override
     public Object getItem(int position) {
-        if (list != null) {
-            return list.get(position);
-        }
-        return null;
+        return list != null ? list.get(position) : null;
     }
-
-    private int selectPosition;
 
     public void setPosition(int position) {
         selectPosition = position;
@@ -50,7 +43,7 @@ public class AdapterHome extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
@@ -80,11 +73,11 @@ public class AdapterHome extends BaseAdapter {
         return convertView;
     }
 
-    class HoldView {
-        TextView tv_;
-    }
-
     public interface IModelHome {
         void setOnclickListener(int position);
+    }
+
+    private class HoldView {
+        TextView tv_;
     }
 }

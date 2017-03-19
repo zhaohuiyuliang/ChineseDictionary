@@ -1,21 +1,21 @@
 package dian.zi.com.zidian;
 
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
-import android.widget.ListView;
+import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.zi.dian.adapter.AdapterHome;
 import com.zi.dian.adapter.AdapterViewPagerHome;
 import com.zi.dian.custom.view.ViewPagerHome;
 import com.zi.dian.ui.FragmentBase;
 import com.zi.dian.ui.FragmentCollection;
-import com.zi.dian.ui.FragmentHistroyFind;
+import com.zi.dian.ui.FragmentHistoryFind;
 import com.zi.dian.ui.FragmentLocateByRadical;
 import com.zi.dian.ui.FragmentLocateBySpelling;
 import com.zi.dian.ui.FragmentLocateByStroke;
@@ -27,12 +27,11 @@ import java.util.List;
 /**
  * Created by wangliang on 6/12/16.
  */
-public class FragmentActivityHome extends AppCompatActivity implements AdapterHome.IModelHome {
+public class FragmentActivityHome extends AppCompatActivity implements
+        NavigationView.OnNavigationItemSelectedListener{
 //    private String[] iconName = {"部首", "笔画", "拼音", "历史", "收藏", "设置"};
     private String[] iconName = {"部首", "笔画", "拼音", "历史", "收藏"};
-    private ListView lview;
     private List data_list;
-    private AdapterHome adapterHome;
 
     private ViewPagerHome view_pager_home;
 
@@ -41,10 +40,8 @@ public class FragmentActivityHome extends AppCompatActivity implements AdapterHo
     private FragmentLocateByRadical fragmentLookByRadical;
     private FragmentLocateBySpelling fragmentLookBySpelling;
     private FragmentLocateByStroke fragmentLookByStroke;
-    private FragmentHistroyFind fragmentHistroyFind;
+    private FragmentHistoryFind mFragmentHistoryFind;
     private FragmentCollection fragmentCollection;
-    private DrawerLayout drawer_layout;
-//    private FragmentSettings fragmentSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,17 +49,19 @@ public class FragmentActivityHome extends AppCompatActivity implements AdapterHo
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer_layout.setDrawerListener(toggle);
         toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
         initView();
         initData();
     }
 
     private void initView() {
-        lview = (ListView) findViewById(R.id.lview_home);
         view_pager_home = (ViewPagerHome) findViewById(R.id.view_pager_home);
         view_pager_home.setScrollble(false);
     }
@@ -71,69 +70,39 @@ public class FragmentActivityHome extends AppCompatActivity implements AdapterHo
         fragmentLookByRadical = new FragmentLocateByRadical();
         fragmentLookByStroke = new FragmentLocateByStroke();
         fragmentLookBySpelling = new FragmentLocateBySpelling();
-        fragmentHistroyFind = new FragmentHistroyFind();
+        mFragmentHistoryFind = new FragmentHistoryFind();
         fragmentCollection = new FragmentCollection();
-//        fragmentSettings = new FragmentSettings();
         List<FragmentBase> fragmentBaseList = new ArrayList<>();
         fragmentBaseList.add(fragmentLookByRadical);
         fragmentBaseList.add(fragmentLookByStroke);
         fragmentBaseList.add(fragmentLookBySpelling);
-        fragmentBaseList.add(fragmentHistroyFind);
+        fragmentBaseList.add(mFragmentHistoryFind);
         fragmentBaseList.add(fragmentCollection);
-//        fragmentBaseList.add(fragmentSettings);
         adapterViewPagerHome = new AdapterViewPagerHome(getSupportFragmentManager(), fragmentBaseList);
         view_pager_home.setAdapter(adapterViewPagerHome);
 
         data_list = Arrays.asList(iconName);
-        adapterHome = new AdapterHome(this, this, data_list);
-        lview.setAdapter(adapterHome);
     }
 
+
     @Override
-    public void setOnclickListener(int position) {
-        switch (position) {
-            case 0: {
-                adapterHome.setPosition(0);
-                view_pager_home.setCurrentItem(0, false);
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
 
-            }
-
-            break;
-            case 1: {
-                adapterHome.setPosition(1);
-                view_pager_home.setCurrentItem(1, false);
-
-            }
-            break;
-            case 2: {
-                adapterHome.setPosition(2);
-                view_pager_home.setCurrentItem(2, false);
-
-            }
-            break;
-            case 3: {
-                adapterHome.setPosition(3);
-                view_pager_home.setCurrentItem(3, false);
-
-            }
-            break;
-            case 4: {
-                adapterHome.setPosition(4);
-                view_pager_home.setCurrentItem(4, false);
-
-            }
-            break;
-            case 5: {
-                adapterHome.setPosition(5);
-                view_pager_home.setCurrentItem(5, false);
-
-            }
-            break;
-            default:
-                break;
-
+        if (id == R.id.nav_radical) {
+            view_pager_home.setCurrentItem(0, false);
+        } else if (id == R.id.nav_stroke) {
+            view_pager_home.setCurrentItem(1, false);
+        } else if (id == R.id.nav_spelling) {
+            view_pager_home.setCurrentItem(2, false);
+        } else if (id == R.id.nav_history) {
+            view_pager_home.setCurrentItem(3, false);
+        } else if (id == R.id.nav_collection) {
+            view_pager_home.setCurrentItem(4, false);
         }
-        drawer_layout.closeDrawer(GravityCompat.START);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
     private long mExitTime;

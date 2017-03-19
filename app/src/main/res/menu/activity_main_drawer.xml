@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_radical"
+            android:title="部首"/>
+        <item
+            android:id="@+id/nav_stroke"
+            android:title="笔画"/>
+        <item
+            android:id="@+id/nav_spelling"
+            android:title="拼音"/>
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_history"
+            android:title="查阅历史"/>
+        <item
+            android:id="@+id/nav_collection"
+            android:title="收藏"/>
+    </group>
+
+</menu>

@@ -34,18 +34,12 @@ public class AdapterHanZi extends BaseAdapter {
 
     @Override
     public int getCount() {
-        if (list != null) {
-            return list.size();
-        }
-        return 0;
+        return list != null?list.size(): 0;
     }
 
     @Override
     public Object getItem(int position) {
-        if (list != null) {
-            return list.get(position);
-        }
-        return null;
+        return list != null ?list.get(position): null ;
     }
 
     private int selectPosition;

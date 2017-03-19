@@ -20,10 +20,10 @@ import dian.zi.com.zidian.R;
 /**
  * Created by wangliang on 6/24/16.
  */
-public class FragmentHistroyFind extends FragmentBase implements AdapterContent.IModelContent {
-    private GridView grid_view_histroy;
+public class FragmentHistoryFind extends FragmentBase implements AdapterContent.IModelContent {
+    private GridView grid_view_history;
     private AdapterContent adapterContent;
-    private TextView tv_clear_histroy;
+    private TextView tv_clear_history;
 
     @Override
     public View loadViewLayout(LayoutInflater layoutInflater, ViewGroup viewGroup) {
@@ -41,9 +41,9 @@ public class FragmentHistroyFind extends FragmentBase implements AdapterContent.
     }
 
     private void initView() {
-        grid_view_histroy = (GridView) view.findViewById(R.id.grid_view_histroy);
-        tv_clear_histroy = (TextView) view.findViewById(R.id.tv_clear_histroy);
-        tv_clear_histroy.setOnClickListener(new View.OnClickListener() {
+        grid_view_history = (GridView) view.findViewById(R.id.grid_view_history);
+        tv_clear_history = (TextView) view.findViewById(R.id.tv_clear_history);
+        tv_clear_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TableHistoryZi tableUseZi = getApplication().getDaoManager().getTableHistroyZi();
@@ -57,7 +57,7 @@ public class FragmentHistroyFind extends FragmentBase implements AdapterContent.
         TableHistoryZi tableUseZi = getApplication().getDaoManager().getTableHistroyZi();
         List<HistoryZi> useZiList = tableUseZi.queryData();
         adapterContent = new AdapterContent(getActivity(), useZiList, this);
-        grid_view_histroy.setAdapter(adapterContent);
+        grid_view_history.setAdapter(adapterContent);
     }
 
     @Override

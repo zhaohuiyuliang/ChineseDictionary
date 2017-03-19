@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_clear_histroy"
+        android:id="@+id/tv_clear_history"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="清空历史"
@@ -13,7 +13,7 @@
         android:textSize="18dp"/>
 
     <GridView
-        android:id="@+id/grid_view_histroy"
+        android:id="@+id/grid_view_history"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
