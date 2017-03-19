@@ -1,14 +1,11 @@
 package com.zi.dian.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 
 import com.zi.dian.ControlApplication;
 import com.zi.dian.adapter.AdapterHanZi;
@@ -16,14 +13,13 @@ import com.zi.dian.adapter.AdapterHanZiAndStroke;
 import com.zi.dian.dao.model.HanZi;
 import com.zi.dian.dao.model.HanZiParaphrase;
 import com.zi.dian.dao.model.Radicals;
-import com.zi.dian.unitl.CommonUntil;
 
 import java.util.List;
 import java.util.Map;
 
 import dian.zi.com.zidian.R;
 
-import static com.zi.dian.adapter.AdapterHanZi.*;
+import static com.zi.dian.adapter.AdapterHanZi.IModelHanZi;
 
 /**
  * Created by wangliang on 6/22/16.

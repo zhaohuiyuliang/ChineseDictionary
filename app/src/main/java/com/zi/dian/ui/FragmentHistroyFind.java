@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import com.zi.dian.ControlApplication;
 import com.zi.dian.adapter.AdapterContent;
-import com.zi.dian.dao.TableHistroyZi;
+import com.zi.dian.dao.TableHistoryZi;
 import com.zi.dian.dao.model.HanZiParaphrase;
-import com.zi.dian.dao.model.HistroyZi;
+import com.zi.dian.dao.model.HistoryZi;
 
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class FragmentHistroyFind extends FragmentBase implements AdapterContent.
         tv_clear_histroy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TableHistroyZi tableUseZi = getApplication().getDaoManager().getTableHistroyZi();
+                TableHistoryZi tableUseZi = getApplication().getDaoManager().getTableHistroyZi();
                 tableUseZi.clearTable();
                 initLoadData();
             }
@@ -54,8 +54,8 @@ public class FragmentHistroyFind extends FragmentBase implements AdapterContent.
     }
 
     private void initLoadData() {
-        TableHistroyZi tableUseZi = getApplication().getDaoManager().getTableHistroyZi();
-        List<HistroyZi> useZiList = tableUseZi.queryData();
+        TableHistoryZi tableUseZi = getApplication().getDaoManager().getTableHistroyZi();
+        List<HistoryZi> useZiList = tableUseZi.queryData();
         adapterContent = new AdapterContent(getActivity(), useZiList, this);
         grid_view_histroy.setAdapter(adapterContent);
     }

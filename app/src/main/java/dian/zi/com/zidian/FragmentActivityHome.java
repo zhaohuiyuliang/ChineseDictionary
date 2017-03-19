@@ -1,7 +1,11 @@
 package dian.zi.com.zidian;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -15,7 +19,6 @@ import com.zi.dian.ui.FragmentHistroyFind;
 import com.zi.dian.ui.FragmentLocateByRadical;
 import com.zi.dian.ui.FragmentLocateBySpelling;
 import com.zi.dian.ui.FragmentLocateByStroke;
-import com.zi.dian.ui.FragmentSettings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +27,7 @@ import java.util.List;
 /**
  * Created by wangliang on 6/12/16.
  */
-public class FragmentActivityHome extends FragmentActivity implements AdapterHome.IModelHome {
+public class FragmentActivityHome extends AppCompatActivity implements AdapterHome.IModelHome {
 //    private String[] iconName = {"部首", "笔画", "拼音", "历史", "收藏", "设置"};
     private String[] iconName = {"部首", "笔画", "拼音", "历史", "收藏"};
     private ListView lview;
@@ -40,12 +43,20 @@ public class FragmentActivityHome extends FragmentActivity implements AdapterHom
     private FragmentLocateByStroke fragmentLookByStroke;
     private FragmentHistroyFind fragmentHistroyFind;
     private FragmentCollection fragmentCollection;
+    private DrawerLayout drawer_layout;
 //    private FragmentSettings fragmentSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer_layout.setDrawerListener(toggle);
+        toggle.syncState();
         initView();
         initData();
     }
@@ -84,6 +95,7 @@ public class FragmentActivityHome extends FragmentActivity implements AdapterHom
             case 0: {
                 adapterHome.setPosition(0);
                 view_pager_home.setCurrentItem(0, false);
+
             }
 
             break;
@@ -121,22 +133,30 @@ public class FragmentActivityHome extends FragmentActivity implements AdapterHom
                 break;
 
         }
+        drawer_layout.closeDrawer(GravityCompat.START);
     }
 
     private long mExitTime;
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if ((System.currentTimeMillis() - mExitTime) > 2000) {
-                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
-                mExitTime = System.currentTimeMillis();
-            } else {
-                finish();
-            }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
             return true;
+        } else {
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                    Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                    mExitTime = System.currentTimeMillis();
+                } else {
+                    finish();
+                }
+                return true;
+            }
+            return super.onKeyDown(keyCode, event);
         }
-        return super.onKeyDown(keyCode, event);
+
     }
 }
 

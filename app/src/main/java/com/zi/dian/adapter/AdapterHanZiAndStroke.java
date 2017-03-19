@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.TextView;
 
 import com.zi.dian.custom.view.MyGridView;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import dian.zi.com.zidian.R;
 
@@ -55,26 +53,17 @@ public class AdapterHanZiAndStroke extends BaseAdapter {
 
     @Override
     public int getCount() {
-        if (listMap != null) {
-            return listMap.size();
-        }
-        return 0;
+        return listMap != null ? listMap.size() : 0;
     }
 
     @Override
     public Object getItem(int position) {
-        if (listMap != null) {
-            return listMap.get(position);
-        }
-        return null;
+        return listMap != null ? listMap.get(position) : null;
     }
 
     @Override
     public long getItemId(int position) {
-        if (listMap != null) {
-            return listMap.size();
-        }
-        return 0;
+        return listMap != null ? listMap.size() : 0;
     }
 
     @Override
@@ -85,20 +74,21 @@ public class AdapterHanZiAndStroke extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_hanzi_stroke, null);
             localHoldView.tv_hanzi_stroke = (TextView) convertView.findViewById(R.id.tv_hanzi_stroke);
             localHoldView.grid_view_zi = (MyGridView) convertView.findViewById(R.id.grid_view_zi);
-            localHoldView.adapterHanZi = new AdapterHanZi(context, (ActivityHanZi) context, null);
-            localHoldView.grid_view_zi.setAdapter(localHoldView.adapterHanZi);
+
             convertView.setTag(localHoldView);
         } else {
             localHoldView = (HoldView) convertView.getTag();
         }
         Integer stroke = keys1.get(position);
         localHoldView.tv_hanzi_stroke.setText("   笔画数：" + stroke);
+        localHoldView.adapterHanZi = new AdapterHanZi(context, (ActivityHanZi) context, null);
+        localHoldView.grid_view_zi.setAdapter(localHoldView.adapterHanZi);
         localHoldView.adapterHanZi.setData(listMap.get(stroke));
         return convertView;
     }
 
 
-    class HoldView {
+    private class HoldView {
         TextView tv_hanzi_stroke;
         MyGridView grid_view_zi;
         AdapterHanZi adapterHanZi;

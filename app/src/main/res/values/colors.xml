@@ -10,4 +10,5 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorTabBg">#D9D9D9</color>
     <color name="colorTabBgSelected">#00000000</color>
+
 </resources>

@@ -3,7 +3,7 @@
     android:id="@+id/title_back_r"
     android:layout_width="fill_parent"
     android:layout_height="55dp"
-    android:background="#D9D9D9">
+    android:background="@color/colorPrimary">
 
 
     <ImageView
@@ -21,6 +21,7 @@
         android:layout_toRightOf="@id/title_back_img"
         android:gravity="center"
         android:paddingLeft="5dp"
+        android:textColor="@color/colorWhite"
         android:paddingRight="10dp"
         android:textSize="16sp" />
 
@@ -40,6 +41,7 @@
         android:layout_marginRight="10dp"
         android:text="收藏"
         android:gravity="center"
+        android:textColor="@color/colorWhite"
         android:textSize="18dp"
         android:visibility="gone" />
 

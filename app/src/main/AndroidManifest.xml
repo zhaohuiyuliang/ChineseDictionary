@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dian.zi.com.zidian"
-    android:versionCode="1"
+    android:versionCode="2"
     android:versionName="@string/version_name">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -25,7 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FragmentActivityHome" />
+        <activity android:name=".FragmentActivityHome"
+                  android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name="com.zi.dian.ui.ActivityHanZiDetail" />
         <activity android:name="com.zi.dian.ui.ActivityHanZi" />
         <activity android:name="com.zi.dian.ui.ActivitySpellingZiStroke" />

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     android:orientation="vertical">
 
 
@@ -11,21 +13,20 @@
         android:layout_height="25dp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
         android:background="#D9D9D9"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
         android:textColor="@color/colorBlack"
-        android:textSize="15dp" />
+        android:textSize="15dp"/>
 
     <com.zi.dian.custom.view.MyGridView
         android:id="@+id/grid_view_zi"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:divider="#7A7A7A"
         android:dividerHeight="0.6dp"
         android:numColumns="6"
-        android:verticalSpacing="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:verticalSpacing="10dp"/>
 </LinearLayout>

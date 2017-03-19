@@ -9,7 +9,6 @@ import android.util.Log;
 
 import com.zi.dian.dao.impl.ZDDatabaseUtils;
 import com.zi.dian.dao.model.CollectZi;
-import com.zi.dian.dao.model.HistroyZi;
 
 import java.util.ArrayList;
 import java.util.List;

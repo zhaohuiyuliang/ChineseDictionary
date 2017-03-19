@@ -6,7 +6,7 @@ import com.zi.dian.dao.TableCollectZi;
 import com.zi.dian.dao.TableLetter;
 import com.zi.dian.dao.TableRadicals;
 import com.zi.dian.dao.TablePyRead;
-import com.zi.dian.dao.TableHistroyZi;
+import com.zi.dian.dao.TableHistoryZi;
 import com.zi.dian.dao.TableSpellingZi;
 import com.zi.dian.dao.TableZi;
 import com.zi.dian.dao.TableZiParaphrase;
@@ -18,7 +18,7 @@ public class DaoManager {
     private TableRadicals tableBS;
     private TableZi tableZiSpelling;
     private TablePyRead tablePyReadg;
-    private TableHistroyZi tableUseZi;
+    private TableHistoryZi tableUseZi;
     private TableCollectZi tableCollectZi;
     private TableLetter tableLetter;
     private TableZiParaphrase tableZiParaphrase;
@@ -69,9 +69,9 @@ public class DaoManager {
         return tablePyReadg;
     }
 
-    public TableHistroyZi getTableHistroyZi() {
+    public TableHistoryZi getTableHistroyZi() {
         if (tableUseZi == null) {
-            tableUseZi = new TableHistroyZi(context);
+            tableUseZi = new TableHistoryZi(context);
         }
         return tableUseZi;
     }

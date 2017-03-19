@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import com.zi.dian.dao.impl.ZDDatabaseUtils;
-import com.zi.dian.dao.model.HistroyZi;
+import com.zi.dian.dao.model.HistoryZi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,15 +16,15 @@ import java.util.List;
 /**
  * Created by wangliang on 6/24/16.
  */
-public class TableHistroyZi {
+public class TableHistoryZi {
 
     private Context context;
 
-    public TableHistroyZi(Context context) {
+    public TableHistoryZi(Context context) {
         this.context = context;
     }
 
-    public void insertData(HistroyZi useZi) {
+    public void insertData(HistoryZi useZi) {
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("zi", useZi.zi);
@@ -32,18 +32,18 @@ public class TableHistroyZi {
     }
 
 
-    public void updateData(HistroyZi useZi) {
+    public void updateData(HistoryZi useZi) {
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         ContentValues contentValues = new ContentValues();
         database.update("table_histroy_zi", contentValues, "zi = ?", new String[]{useZi.zi});
     }
 
-    public void batchInsertData(List<HistroyZi> listRadicals) {
+    public void batchInsertData(List<HistoryZi> listRadicals) {
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         String sql = "insert into table_use_zi (zi) values(?)";
         SQLiteStatement statement = database.compileStatement(sql);
         database.beginTransaction();
-        for (HistroyZi useZi : listRadicals) {
+        for (HistoryZi useZi : listRadicals) {
             Log.d("table_histroy_zi", useZi.zi + " " + useZi.zi);
             statement.bindString(1, useZi.zi);
             statement.executeInsert();
@@ -53,13 +53,13 @@ public class TableHistroyZi {
         database.endTransaction();
     }
 
-    public List<HistroyZi> queryData() {
-        List<HistroyZi> ziList = new ArrayList<>();
+    public List<HistoryZi> queryData() {
+        List<HistoryZi> ziList = new ArrayList<>();
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         Cursor cursor = database.query("table_histroy_zi", null, null, null, null, null, null);
         if (cursor != null && cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
-                HistroyZi zi = new HistroyZi();
+                HistoryZi zi = new HistoryZi();
                 zi.zi = cursor.getString(0);
                 ziList.add(zi);
                 cursor.moveToNext();
@@ -68,12 +68,12 @@ public class TableHistroyZi {
         return ziList;
     }
 
-    public HistroyZi queryDataByZi(String zi) {
-        HistroyZi hanZiParaphrase = null;
+    public HistoryZi queryDataByZi(String zi) {
+        HistoryZi hanZiParaphrase = null;
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         Cursor cursor = database.query("table_histroy_zi", null, " zi = ?", new String[]{zi}, null, null, null);
         if (cursor != null && cursor.moveToFirst()) {
-            hanZiParaphrase = new HistroyZi();
+            hanZiParaphrase = new HistoryZi();
             hanZiParaphrase.zi = cursor.getString(0);
         }
         return hanZiParaphrase;

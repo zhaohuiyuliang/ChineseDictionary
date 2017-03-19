@@ -7,11 +7,11 @@ import android.widget.TextView;
 import com.zi.dian.ControlApplication;
 import com.zi.dian.dao.TableCollectZi;
 import com.zi.dian.dao.TablePyRead;
-import com.zi.dian.dao.TableHistroyZi;
+import com.zi.dian.dao.TableHistoryZi;
 import com.zi.dian.dao.model.CollectZi;
 import com.zi.dian.dao.model.HanZiParaphrase;
 import com.zi.dian.dao.model.PyRead;
-import com.zi.dian.dao.model.HistroyZi;
+import com.zi.dian.dao.model.HistoryZi;
 import com.zi.dian.net.TaskErrorCorrection;
 import com.zi.dian.unitl.SundUnitl;
 
@@ -78,18 +78,16 @@ public class ActivityHanZiDetail extends ActivityBase implements View.OnClickLis
         }
         tv_paraphrase.setText(hanZi.baseParaphrase);
         TableCollectZi tableUseZi = getCtrApplication().getDaoManager().getTableCollectZi();
-        TableHistroyZi tableHistroyZi = getCtrApplication().getDaoManager().getTableHistroyZi();
-        HistroyZi histroyZi = new HistroyZi();
-        histroyZi.zi = hanZi.zi;
-        tableHistroyZi.insertData(histroyZi);
+        TableHistoryZi tableHistoryZi = getCtrApplication().getDaoManager().getTableHistroyZi();
+        HistoryZi historyZi = new HistoryZi();
+        historyZi.zi = hanZi.zi;
+        tableHistoryZi.insertData(historyZi);
 
         boolean useZi = tableUseZi.isData(hanZi.zi);
         if (useZi) {
             tv_collect.setText("取消收藏");
-            tv_collect.setTextColor(getResources().getColor(R.color.colorRed));
         } else {
             tv_collect.setText("收藏");
-            tv_collect.setTextColor(getResources().getColor(R.color.colorBlack));
         }
     }
 
@@ -143,9 +141,7 @@ public class ActivityHanZiDetail extends ActivityBase implements View.OnClickLis
                 if (((TextView) v).getText().toString().compareTo("取消收藏") == 0) {
                     tv_collect.setText("收藏");
                     tableUseZi.deleteDataByZi(hanZi.zi);
-                    tv_collect.setTextColor(getResources().getColor(R.color.colorBlack));
                 } else if (((TextView) v).getText().toString().compareTo("收藏") == 0) {
-                    tv_collect.setTextColor(getResources().getColor(R.color.colorRed));
                     tv_collect.setText("取消收藏");
                     CollectZi collectZi = new CollectZi();
                     collectZi.zi = hanZi.zi;
