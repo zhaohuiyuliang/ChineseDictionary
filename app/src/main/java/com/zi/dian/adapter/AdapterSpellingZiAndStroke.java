@@ -69,14 +69,14 @@ public class AdapterSpellingZiAndStroke extends BaseAdapter {
             holdView = new HoldView();
             holdView.tv_stroke = (TextView)convertView.findViewById(R.id.tv_hanzi_stroke);
             holdView.grid_view_zi = (GridView)convertView.findViewById(R.id.grid_view_zi);
-            holdView.adapterSpellingZi = new AdapterSpellingZi(context, modelSpellingZi, null);
-            holdView.grid_view_zi.setAdapter(holdView.adapterSpellingZi);
             convertView.setTag(holdView);
         } else {
             holdView = (HoldView) convertView.getTag();
         }
         Integer key = listKey.get(position);
         holdView.tv_stroke.setText("笔画数：" + key);
+        holdView.adapterSpellingZi = new AdapterSpellingZi(context, modelSpellingZi, null);
+        holdView.grid_view_zi.setAdapter(holdView.adapterSpellingZi);
         holdView.adapterSpellingZi.setData(listMap.get(key));
         return convertView;
     }

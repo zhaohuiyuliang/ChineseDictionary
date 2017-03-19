@@ -42,23 +42,17 @@ public class AdapterLetterSpelling extends BaseAdapter {
 
     @Override
     public int getCount() {
-        if (listMap != null) {
-            return listMap.size();
-        }
-        return 0;
+        return listMap != null ? listMap.size() : 0;
     }
 
     @Override
     public Object getItem(int position) {
-        if (listMap != null) {
-            return listMap.get(keys.get(position));
-        }
-        return null;
+        return listMap != null ? listMap.get(keys.get(position)) : null;
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
@@ -69,14 +63,14 @@ public class AdapterLetterSpelling extends BaseAdapter {
             holdView = new HoldView();
             holdView.tv_letter = (TextView) convertView.findViewById(R.id.tv_letter);
             holdView.grid_view_spelling = (GridView) convertView.findViewById(R.id.grid_view_spelling);
-            holdView.adapterSpelling = new AdapterSpelling(null, context, modelSpelling);
-            holdView.grid_view_spelling.setAdapter(holdView.adapterSpelling);
             convertView.setTag(holdView);
         } else {
             holdView = (HoldView) convertView.getTag();
         }
         String key = keys.get(position);
         holdView.tv_letter.setText(key);
+        holdView.adapterSpelling = new AdapterSpelling(null, context, modelSpelling);
+        holdView.grid_view_spelling.setAdapter(holdView.adapterSpelling);
         holdView.adapterSpelling.setData(listMap.get(key));
         return convertView;
     }

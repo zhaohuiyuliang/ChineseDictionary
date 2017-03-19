@@ -34,23 +34,17 @@ public class AdapterSpelling extends BaseAdapter {
 
     @Override
     public int getCount() {
-        if (letterSpellingList != null) {
-            return letterSpellingList.size();
-        }
-        return 0;
+        return letterSpellingList != null?  letterSpellingList.size():0;
     }
 
     @Override
     public Object getItem(int position) {
-        if (letterSpellingList != null) {
-            return letterSpellingList.get(position);
-        }
-        return null;
+        return letterSpellingList != null ? letterSpellingList.get(position) : null;
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
