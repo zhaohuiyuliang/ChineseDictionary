@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by wangliang on 6/14/16.
  */
-public class HanZi implements Serializable {
+public class ChineseCharacter implements Serializable {
 
     public int ID;
 
@@ -19,7 +19,7 @@ public class HanZi implements Serializable {
 
     public String linkUrl;
 
-    public HanZi(String radical, int stroke,String zi,  String  spelling, String linkUrl) {
+    public ChineseCharacter(String radical, int stroke, String zi, String  spelling, String linkUrl) {
         this.radical = radical;
         this.zi = zi;
         this.stroke = stroke;
@@ -27,6 +27,6 @@ public class HanZi implements Serializable {
         this.linkUrl = linkUrl;
     }
 
-    public HanZi() {
+    public ChineseCharacter() {
     }
 }

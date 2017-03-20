@@ -8,8 +8,8 @@ import com.zi.dian.ControlApplication;
 import com.zi.dian.dao.TableCollectZi;
 import com.zi.dian.dao.TablePyRead;
 import com.zi.dian.dao.TableHistoryZi;
+import com.zi.dian.dao.model.ChineseCharacterParaphrase;
 import com.zi.dian.dao.model.CollectZi;
-import com.zi.dian.dao.model.HanZiParaphrase;
 import com.zi.dian.dao.model.PyRead;
 import com.zi.dian.dao.model.HistoryZi;
 import com.zi.dian.net.TaskErrorCorrection;
@@ -21,7 +21,7 @@ import dian.zi.com.zidian.R;
  * Created by wangliang on 6/17/16.
  */
 public class ActivityHanZiDetail extends ActivityBase implements View.OnClickListener {
-    private HanZiParaphrase hanZi;
+    private ChineseCharacterParaphrase hanZi;
     private TextView tv_hanzi_;
     private TextView tv_spelling_;
     private TextView tv_spelling_2;
@@ -37,7 +37,7 @@ public class ActivityHanZiDetail extends ActivityBase implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hanzi_detial);
         tablePyRead = ControlApplication.getApplication().getDaoManager().getTablePyRead();
-        hanZi = (HanZiParaphrase) getIntent().getSerializableExtra("HanZiParaphrase");
+        hanZi = (ChineseCharacterParaphrase) getIntent().getSerializableExtra("ChineseCharacterParaphrase");
         initView();
         loadData();
     }
@@ -46,7 +46,7 @@ public class ActivityHanZiDetail extends ActivityBase implements View.OnClickLis
         super.initView();
         tv_collect = (TextView) findViewById(R.id.tv_collect);
         tv_collect.setVisibility(View.VISIBLE);
-        tv_hanzi_ = (TextView) findViewById(R.id.tv_hanzi_);
+        tv_hanzi_ = (TextView) findViewById(R.id.tv_chinese_character);
         tv_spelling_ = (TextView) findViewById(R.id.tv_spelling_);
         tv_spelling_2 = (TextView) findViewById(R.id.tv_spelling_2);
         tv_base = (TextView) findViewById(R.id.tv_base);
@@ -106,7 +106,7 @@ public class ActivityHanZiDetail extends ActivityBase implements View.OnClickLis
                 SundUnitl.startPlayVideo(pyRead.tone);
             }
             break;
-            case R.id.tv_hanzi_:
+            case R.id.tv_chinese_character:
                 break;
 
             case R.id.tv_base:

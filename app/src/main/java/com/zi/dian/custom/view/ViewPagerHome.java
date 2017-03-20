@@ -8,9 +8,9 @@ import android.view.MotionEvent;
 /**
  * Created by wangliang on 6/17/16.
  */
-public class ViewPagerHome extends ViewPager {
+public class ViewPagerHome extends ViewPager  {
 
-    private boolean scrollble = true;
+    private boolean scrollable = true;
 
     public ViewPagerHome(Context context) {
         super(context);
@@ -23,18 +23,18 @@ public class ViewPagerHome extends ViewPager {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        if (!scrollble) {
+        if (!scrollable) {
             return true;
         }
         return super.onTouchEvent(ev);
     }
 
 
-    public boolean isScrollble() {
-        return scrollble;
+    public boolean isScrollable() {
+        return scrollable;
     }
 
-    public void setScrollble(boolean scrollble) {
-        this.scrollble = scrollble;
+    public void setScrollable(boolean scrollable) {
+        this.scrollable = scrollable;
     }
 }

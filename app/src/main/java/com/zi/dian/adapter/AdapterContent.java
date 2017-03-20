@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.zi.dian.dao.model.HanZi;
+import com.zi.dian.dao.model.ChineseCharacter;
 
 import java.util.List;
 
@@ -54,12 +54,12 @@ public class AdapterContent extends BaseAdapter {
         if (convertView == null) {
             localHoldView = new HoldView();
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_content, null);
-            localHoldView.tv_hanzi = (TextView) convertView.findViewById(R.id.tv_hanzi);
+            localHoldView.tv_hanzi = (TextView) convertView.findViewById(R.id.tv_chinese_character);
             convertView.setTag(localHoldView);
         } else {
             localHoldView = (HoldView) convertView.getTag();
         }
-        final HanZi useZi = (HanZi) list.get(position);
+        final ChineseCharacter useZi = (ChineseCharacter) list.get(position);
         localHoldView.tv_hanzi.setText(useZi.zi);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

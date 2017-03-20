@@ -65,10 +65,10 @@ public class AdapterSpellingZiAndStroke extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         HoldView holdView;
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_hanzi_stroke, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_chinese_character_stroke, null);
             holdView = new HoldView();
-            holdView.tv_stroke = (TextView)convertView.findViewById(R.id.tv_hanzi_stroke);
-            holdView.grid_view_zi = (GridView)convertView.findViewById(R.id.grid_view_zi);
+            holdView.tv_stroke = (TextView)convertView.findViewById(R.id.tv_chinese_character_stroke);
+            holdView.grid_view_zi = (GridView)convertView.findViewById(R.id.grid_view_chinese_character);
             convertView.setTag(holdView);
         } else {
             holdView = (HoldView) convertView.getTag();

@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.zi.dian.dao.model.HanZi;
 import com.zi.dian.dao.model.SpellingZi;
 
 import java.util.List;
@@ -66,8 +65,8 @@ public class AdapterSpellingZi extends BaseAdapter {
         HoldView localHoldView;
         if (convertView == null) {
             localHoldView = new HoldView();
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_hanzi, null);
-            localHoldView.tv_ = (TextView) convertView.findViewById(R.id.tv_hanzi);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_chinese_character, null);
+            localHoldView.tv_ = (TextView) convertView.findViewById(R.id.tv_chinese_character);
             convertView.setTag(localHoldView);
         } else {
             localHoldView = (HoldView) convertView.getTag();

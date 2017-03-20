@@ -2,13 +2,11 @@ package com.zi.dian.net;
 
 import android.util.Log;
 
-import com.zi.dian.dao.model.HanZi;
+import com.zi.dian.dao.model.ChineseCharacter;
 
 import org.htmlparser.Node;
 import org.htmlparser.Parser;
-import org.htmlparser.Tag;
 import org.htmlparser.filters.AndFilter;
-import org.htmlparser.filters.HasAttributeFilter;
 import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeList;
@@ -32,8 +30,8 @@ public class TaskZi extends LoadData {
 
     @Override
     public void run() {
-        List<HanZi> hanZiList = parserRadicals();
-        getAppliction().getDaoManager().getTableZi().batchInsertData(hanZiList);
+        List<ChineseCharacter> chineseCharacterList = parserRadicals();
+        getAppliction().getDaoManager().getTableZi().batchInsertData(chineseCharacterList);
         Log.d(TAG, "run: ");
     }
 
@@ -42,14 +40,14 @@ public class TaskZi extends LoadData {
 
     }
 
-    private List<HanZi> parserRadicals() {
-        List<HanZi> hanZiList = parserZi();
-        return hanZiList;
+    private List<ChineseCharacter> parserRadicals() {
+        List<ChineseCharacter> chineseCharacterList = parserZi();
+        return chineseCharacterList;
     }
 
 
     private List parserZi() {
-        List<HanZi> hanZiList = new ArrayList<>();
+        List<ChineseCharacter> chineseCharacterList = new ArrayList<>();
         try {
             Parser htmlParser = new Parser(url);
             htmlParser.setEncoding("GBK");
@@ -76,13 +74,13 @@ public class TaskZi extends LoadData {
                         set.add(spellingList);//去重
                         for(Iterator it = set.iterator(); it.hasNext(); ){
                             String spelling = it.next().toString();
-                            HanZi hanZi = new HanZi();
-                            hanZi.zi = ((LinkTag) aNode).getLinkText();
-                            hanZi.linkUrl = ((LinkTag) aNode).getLink();
-                            hanZi.radical = titles[1].split("：")[1];
-                            hanZi.stroke = Integer.valueOf(titles[2].split("：")[1]);
-                            hanZi.spelling = spelling;
-                            hanZiList.add(hanZi);
+                            ChineseCharacter chineseCharacter = new ChineseCharacter();
+                            chineseCharacter.zi = ((LinkTag) aNode).getLinkText();
+                            chineseCharacter.linkUrl = ((LinkTag) aNode).getLink();
+                            chineseCharacter.radical = titles[1].split("：")[1];
+                            chineseCharacter.stroke = Integer.valueOf(titles[2].split("：")[1]);
+                            chineseCharacter.spelling = spelling;
+                            chineseCharacterList.add(chineseCharacter);
                         }
                     }
                 }
@@ -90,6 +88,6 @@ public class TaskZi extends LoadData {
         } catch (ParserException e) {
             e.printStackTrace();
         }
-        return hanZiList;
+        return chineseCharacterList;
     }
 }

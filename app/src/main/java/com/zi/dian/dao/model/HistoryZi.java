@@ -3,7 +3,7 @@ package com.zi.dian.dao.model;
 /**
  * Created by wangliang on 6/24/16.
  */
-public class HistoryZi extends HanZi {
+public class HistoryZi extends ChineseCharacter {
     public String histroy = "";
 
     public HistoryZi(String zi, String histroy) {

@@ -1,7 +1,7 @@
 package com.zi.dian.net;
 
-import com.zi.dian.dao.model.HanZi;
-import com.zi.dian.dao.model.HanZiParaphrase;
+import com.zi.dian.dao.model.ChineseCharacter;
+import com.zi.dian.dao.model.ChineseCharacterParaphrase;
 
 import org.htmlparser.Node;
 import org.htmlparser.Parser;
@@ -19,16 +19,16 @@ import java.util.List;
  * Created by wangliang on 6/23/16.
  */
 public class TaskErrorCorrection extends LoadData {
-    private HanZi hanZi;
-    private HanZiParaphrase hanZiParaphrase;
+    private ChineseCharacter mChineseCharacter;
+    private ChineseCharacterParaphrase hanZiParaphrase;
     private String url;
 
-    public TaskErrorCorrection(HanZi hanZi) {
-        this.hanZi = hanZi;
-        url = "http://hanyu.baidu.com/zici/s?wd=" + hanZi.zi;
+    public TaskErrorCorrection(ChineseCharacter chineseCharacter) {
+        this.mChineseCharacter = chineseCharacter;
+        url = "http://hanyu.baidu.com/zici/s?wd=" + chineseCharacter.zi;
     }
 
-    public TaskErrorCorrection(HanZiParaphrase hanZiParaphrase) {
+    public TaskErrorCorrection(ChineseCharacterParaphrase hanZiParaphrase) {
         this.hanZiParaphrase = hanZiParaphrase;
         url = "http://hanyu.baidu.com/zici/s?wd=" + hanZiParaphrase.zi + "&tupu=01";
 //        try {

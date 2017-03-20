@@ -18,6 +18,7 @@ public class AdapterRadicalStroke extends BaseAdapter {
     private List<String> list;
     private Context mContext;
     private IModelRadicalsStroke localModel;
+    private int selectPosition = 0;
 
     public AdapterRadicalStroke(Context context, IModelRadicalsStroke model, List<String> list) {
         mContext = context;
@@ -32,21 +33,13 @@ public class AdapterRadicalStroke extends BaseAdapter {
 
     @Override
     public int getCount() {
-        if (list != null) {
-            return list.size();
-        }
-        return 0;
+        return list != null ? list.size() : 0;
     }
 
     @Override
     public Object getItem(int position) {
-        if (list != null) {
-            return list.get(position);
-        }
-        return null;
+        return list != null ? list.get(position) : null;
     }
-
-    private int selectPosition = 0;
 
     public void setPosition(int position) {
         selectPosition = position;
@@ -55,7 +48,7 @@ public class AdapterRadicalStroke extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
@@ -88,12 +81,12 @@ public class AdapterRadicalStroke extends BaseAdapter {
         return convertView;
     }
 
-    class HoldView {
-        TextView tv_radical_stroke;
-    }
-
     public interface IModelRadicalsStroke {
         void setOnclickListener(String stroke);
+    }
+
+    private class HoldView {
+        TextView tv_radical_stroke;
     }
 
 }

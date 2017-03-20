@@ -8,7 +8,7 @@ import com.zi.dian.ControlApplication;
 import com.zi.dian.adapter.AdapterSpellingZi;
 import com.zi.dian.adapter.AdapterSpellingZiAndStroke;
 import com.zi.dian.dao.TableSpellingZi;
-import com.zi.dian.dao.model.HanZiParaphrase;
+import com.zi.dian.dao.model.ChineseCharacterParaphrase;
 import com.zi.dian.dao.model.SpellingZi;
 
 import java.util.List;
@@ -55,8 +55,8 @@ public class ActivitySpellingZiStroke extends ActivityBase implements AdapterSpe
     public void setOnclickListener(SpellingZi spellingZi) {
         Intent intent = new Intent(this, ActivityHanZiDetail.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        HanZiParaphrase hanZiParaphrase = ControlApplication.getApplication().getDaoManager().getTableZiParaphrase().queryDataByZi(spellingZi.zi);
-        intent.putExtra("HanZiParaphrase", hanZiParaphrase);
+        ChineseCharacterParaphrase hanZiParaphrase = ControlApplication.getApplication().getDaoManager().getTableZiParaphrase().queryDataByZi(spellingZi.zi);
+        intent.putExtra("ChineseCharacterParaphrase", hanZiParaphrase);
         getApplication().startActivity(intent);
     }
 }

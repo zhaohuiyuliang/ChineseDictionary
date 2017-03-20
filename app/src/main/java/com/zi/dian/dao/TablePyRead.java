@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.zi.dian.dao.impl.ZDDatabaseUtils;
-import com.zi.dian.dao.model.HanZiParaphrase;
 import com.zi.dian.dao.model.PyRead;
 
 import java.util.ArrayList;

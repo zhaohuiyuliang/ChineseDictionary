@@ -8,8 +8,7 @@ import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import com.zi.dian.dao.impl.ZDDatabaseUtils;
-import com.zi.dian.dao.model.HanZi;
-import com.zi.dian.dao.model.HanZiParaphrase;
+import com.zi.dian.dao.model.ChineseCharacterParaphrase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,7 @@ public class TableZiParaphrase {
         this.context = context;
     }
 
-    public void insertData(HanZiParaphrase hanZi) {
+    public void insertData(ChineseCharacterParaphrase hanZi) {
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("radical", hanZi.radical);
@@ -37,7 +36,7 @@ public class TableZiParaphrase {
         database.insert("bs_zi_paraphrase_table", null, contentValues);
     }
 
-    public void updateData(HanZiParaphrase hanZi) {
+    public void updateData(ChineseCharacterParaphrase hanZi) {
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("baseParaphrase", hanZi.baseParaphrase);
@@ -45,12 +44,12 @@ public class TableZiParaphrase {
         database.update("bs_zi_paraphrase_table", contentValues, "zi = ? and spelling = ?", new String[]{hanZi.zi, hanZi.spelling});
     }
 
-    public void batchInsertData(List<HanZiParaphrase> listRadicals) {
+    public void batchInsertData(List<ChineseCharacterParaphrase> listRadicals) {
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         String sql = "insert into bs_zi_paraphrase_table (radical, zi,spelling, stroke, linkUrl, baseParaphrase,detailedParaphrase ) values(?,?,?,?,?)";
         SQLiteStatement statement = database.compileStatement(sql);
         database.beginTransaction();
-        for (HanZiParaphrase zi : listRadicals) {
+        for (ChineseCharacterParaphrase zi : listRadicals) {
             Log.d("TableZi", zi.zi + " " + zi.spelling);
             statement.bindString(1, zi.radical);
             statement.bindString(2, zi.zi);
@@ -66,13 +65,13 @@ public class TableZiParaphrase {
         database.endTransaction();
     }
 
-    public List<HanZiParaphrase> queryAllData() {
-        List<HanZiParaphrase> ziList = new ArrayList<>();
+    public List<ChineseCharacterParaphrase> queryAllData() {
+        List<ChineseCharacterParaphrase> ziList = new ArrayList<>();
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         Cursor cursor = database.query("bs_zi_paraphrase_table", null, null, null, null, null, null);
         if (cursor != null && cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
-                HanZiParaphrase zi = new HanZiParaphrase();
+                ChineseCharacterParaphrase zi = new ChineseCharacterParaphrase();
                 zi.radical = cursor.getString(0);
                 zi.stroke = cursor.getInt(1);
                 zi.zi = cursor.getString(2);
@@ -86,8 +85,8 @@ public class TableZiParaphrase {
         return ziList;
     }
 
-    public HanZiParaphrase queryDataByZi(String zi) {
-        HanZiParaphrase hanZiParaphrase = new HanZiParaphrase();
+    public ChineseCharacterParaphrase queryDataByZi(String zi) {
+        ChineseCharacterParaphrase hanZiParaphrase = new ChineseCharacterParaphrase();
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         Cursor cursor = database.query("bs_zi_paraphrase_table", null, " zi = ?", new String[]{zi}, null, null, null);
         if (cursor != null && cursor.moveToFirst()) {
@@ -103,7 +102,7 @@ public class TableZiParaphrase {
         return hanZiParaphrase;
     }
 
-    public boolean isData(HanZiParaphrase hanZiParaphrase) {
+    public boolean isData(ChineseCharacterParaphrase hanZiParaphrase) {
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         Cursor localCursor = database.query("bs_zi_paraphrase_table", null,
                 "zi = ? AND spelling = ?", new String[]{hanZiParaphrase.zi, hanZiParaphrase.spelling}, null, null, null);

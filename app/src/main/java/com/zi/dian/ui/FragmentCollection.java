@@ -10,8 +10,8 @@ import android.widget.TextView;
 import com.zi.dian.ControlApplication;
 import com.zi.dian.adapter.AdapterContent;
 import com.zi.dian.dao.TableCollectZi;
+import com.zi.dian.dao.model.ChineseCharacterParaphrase;
 import com.zi.dian.dao.model.CollectZi;
-import com.zi.dian.dao.model.HanZiParaphrase;
 
 import java.util.List;
 
@@ -65,8 +65,8 @@ public class FragmentCollection extends FragmentBase implements AdapterContent.I
     public void setOnclickListener(String zi) {
         Intent intent = new Intent(getActivity(), ActivityHanZiDetail.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        HanZiParaphrase hanZiParaphrase = ControlApplication.getApplication().getDaoManager().getTableZiParaphrase().queryDataByZi(zi);
-        intent.putExtra("HanZiParaphrase", hanZiParaphrase);
+        ChineseCharacterParaphrase hanZiParaphrase = ControlApplication.getApplication().getDaoManager().getTableZiParaphrase().queryDataByZi(zi);
+        intent.putExtra("ChineseCharacterParaphrase", hanZiParaphrase);
         getApplication().startActivity(intent);
     }
 

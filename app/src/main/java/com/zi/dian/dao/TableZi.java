@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import com.zi.dian.dao.impl.ZDDatabaseUtils;
-import com.zi.dian.dao.model.HanZi;
+import com.zi.dian.dao.model.ChineseCharacter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,23 +27,23 @@ public class TableZi {
         this.context = context;
     }
 
-    public void insertData(HanZi hanZi) {
+    public void insertData(ChineseCharacter chineseCharacter) {
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("radical", hanZi.radical);
-        contentValues.put("zi", hanZi.zi);
-        contentValues.put("spelling", hanZi.spelling);
-        contentValues.put("stroke", hanZi.stroke);
-        contentValues.put("linkUrl", hanZi.linkUrl);
+        contentValues.put("radical", chineseCharacter.radical);
+        contentValues.put("zi", chineseCharacter.zi);
+        contentValues.put("spelling", chineseCharacter.spelling);
+        contentValues.put("stroke", chineseCharacter.stroke);
+        contentValues.put("linkUrl", chineseCharacter.linkUrl);
         database.insert("bs_zi_table", null, contentValues);
     }
 
-    public void batchInsertData(List<HanZi> listRadicals) {
+    public void batchInsertData(List<ChineseCharacter> listRadicals) {
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         String sql = "insert into bs_zi_table (radical, zi,spelling, stroke, linkUrl) values(?,?,?,?,?)";
         SQLiteStatement statement = database.compileStatement(sql);
         database.beginTransaction();
-        for (HanZi zi : listRadicals) {
+        for (ChineseCharacter zi : listRadicals) {
             Log.d("TableZi", zi.zi + " " + zi.spelling);
             statement.bindString(1, zi.radical);
             statement.bindString(2, zi.zi);
@@ -57,12 +57,12 @@ public class TableZi {
         database.endTransaction();
     }
 
-    public Map<Integer, List<HanZi>> queryAllData(String radicals) {
-        Map<Integer, List<HanZi>> ziList = new HashMap<>();
+    public Map<Integer, List<ChineseCharacter>> queryAllData(String radicals) {
+        Map<Integer, List<ChineseCharacter>> ziList = new HashMap<>();
         List<Integer> list = queryAllStrokeByRadicals(radicals);
         for (Integer integer : list) {
-            List<HanZi> hanZiList = queryDataByStrokeAndRadicals(radicals, integer);
-            ziList.put(integer, hanZiList);
+            List<ChineseCharacter> chineseCharacterList = queryDataByStrokeAndRadicals(radicals, integer);
+            ziList.put(integer, chineseCharacterList);
         }
         return ziList;
     }
@@ -104,8 +104,8 @@ public class TableZi {
 
 
 
-    public List<HanZi> queryDataByStrokeAndRadicals(String radicals, int stroke) {
-        List<HanZi> ziList = new ArrayList<>();
+    public List<ChineseCharacter> queryDataByStrokeAndRadicals(String radicals, int stroke) {
+        List<ChineseCharacter> ziList = new ArrayList<>();
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         Cursor cursor;
         if ("".compareTo(radicals) == 0) {
@@ -118,7 +118,7 @@ public class TableZi {
         }
         if (cursor != null && cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
-                HanZi zi = new HanZi();
+                ChineseCharacter zi = new ChineseCharacter();
                 zi.radical = cursor.getString(0);
                 zi.zi = cursor.getString(1);
                 zi.stroke = cursor.getInt(2);

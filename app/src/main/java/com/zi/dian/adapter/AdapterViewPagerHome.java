@@ -21,13 +21,16 @@ public class AdapterViewPagerHome extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return localFragments.size();
+        return localFragments != null ? localFragments.size() : 0;
     }
 
     @Override
     public Fragment getItem(int position) {
 
-        return localFragments.get(position);
+        return localFragments != null ? localFragments.get(position) : null;
     }
+
+
+
 
 }

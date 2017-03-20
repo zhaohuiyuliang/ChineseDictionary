@@ -2,28 +2,24 @@ package dian.zi.com.zidian;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
-import com.zi.dian.ControlApplication;
-import com.zi.dian.dao.impl.ZDDatabaseUtils;
-import com.zi.dian.net.Controller;
 import com.zi.dian.unitl.FileCopy;
 
 import java.io.File;
 
 public class SplashActivity extends Activity {
+    private static final int LOAD_DB_END = 1;
+
+    private Handle handle = new Handle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
     }
-
-    private Handle handle = new Handle();
 
     @Override
     protected void onResume() {
@@ -54,24 +50,26 @@ public class SplashActivity extends Activity {
                         e.printStackTrace();
                     }
                 }
-                handle.sendEmptyMessage(1);
+                handle.sendEmptyMessage(LOAD_DB_END);
             }
         }).start();
     }
 
-    class Handle extends Handler {
+    private class Handle extends Handler {
 
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
-                case 1: {
+                case LOAD_DB_END: {
                     Intent intent = new Intent(SplashActivity.this, FragmentActivityHome.class);
                     startActivity(intent);
                     finish();
-                }
-                break;
-                default:
                     break;
+                }
+                default: {
+
+                    break;
+                }
             }
         }
     }

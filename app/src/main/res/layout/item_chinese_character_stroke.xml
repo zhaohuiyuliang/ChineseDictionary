@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/tv_hanzi_stroke"
+        android:id="@+id/tv_chinese_character_stroke"
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:layout_centerHorizontal="true"
@@ -20,7 +20,7 @@
         android:textSize="15dp"/>
 
     <com.zi.dian.custom.view.MyGridView
-        android:id="@+id/grid_view_zi"
+        android:id="@+id/grid_view_chinese_character"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="10dp"

@@ -8,7 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zi.dian.dao.model.HanZi;
 import com.zi.dian.dao.model.Radicals;
 
 import java.util.List;

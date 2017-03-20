@@ -28,7 +28,7 @@
         <activity android:name=".FragmentActivityHome"
                   android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name="com.zi.dian.ui.ActivityHanZiDetail" />
-        <activity android:name="com.zi.dian.ui.ActivityHanZi" />
+        <activity android:name="com.zi.dian.ui.ActivityChineseCharacter" />
         <activity android:name="com.zi.dian.ui.ActivitySpellingZiStroke" />
     </application>
 

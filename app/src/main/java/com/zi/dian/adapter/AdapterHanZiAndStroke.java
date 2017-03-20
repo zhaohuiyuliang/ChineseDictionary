@@ -8,8 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.zi.dian.custom.view.MyGridView;
-import com.zi.dian.dao.model.HanZi;
-import com.zi.dian.ui.ActivityHanZi;
+import com.zi.dian.dao.model.ChineseCharacter;
+import com.zi.dian.ui.ActivityChineseCharacter;
 import com.zi.dian.unitl.QuickSort;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import dian.zi.com.zidian.R;
  * Created by wangliang on 6/22/16.
  */
 public class AdapterHanZiAndStroke extends BaseAdapter {
-    private Map<Integer, List<HanZi>> listMap;
+    private Map<Integer, List<ChineseCharacter>> listMap;
     private List<Integer> keys1;
     private Context context;
 
@@ -71,9 +71,9 @@ public class AdapterHanZiAndStroke extends BaseAdapter {
         HoldView localHoldView;
         if (convertView == null) {
             localHoldView = new HoldView();
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_hanzi_stroke, null);
-            localHoldView.tv_hanzi_stroke = (TextView) convertView.findViewById(R.id.tv_hanzi_stroke);
-            localHoldView.grid_view_zi = (MyGridView) convertView.findViewById(R.id.grid_view_zi);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_chinese_character_stroke, null);
+            localHoldView.tv_hanzi_stroke = (TextView) convertView.findViewById(R.id.tv_chinese_character_stroke);
+            localHoldView.grid_view_zi = (MyGridView) convertView.findViewById(R.id.grid_view_chinese_character);
 
             convertView.setTag(localHoldView);
         } else {
@@ -81,7 +81,7 @@ public class AdapterHanZiAndStroke extends BaseAdapter {
         }
         Integer stroke = keys1.get(position);
         localHoldView.tv_hanzi_stroke.setText("   笔画数：" + stroke);
-        localHoldView.adapterHanZi = new AdapterHanZi(context, (ActivityHanZi) context, null);
+        localHoldView.adapterHanZi = new AdapterHanZi(context, (ActivityChineseCharacter) context, null);
         localHoldView.grid_view_zi.setAdapter(localHoldView.adapterHanZi);
         localHoldView.adapterHanZi.setData(listMap.get(stroke));
         return convertView;

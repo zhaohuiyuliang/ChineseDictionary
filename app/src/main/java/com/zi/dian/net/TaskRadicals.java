@@ -2,7 +2,6 @@ package com.zi.dian.net;
 
 
 import com.zi.dian.dao.TablePyRead;
-import com.zi.dian.dao.model.HanZi;
 import com.zi.dian.dao.model.PyRead;
 import com.zi.dian.dao.model.Radicals;
 
@@ -15,7 +14,6 @@ import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,9 +34,9 @@ public class TaskRadicals extends LoadData {
 //        for (Radicals radicals : radicalsList) {
 //            new TaskZi(radicals.linkUrl).run();
 //        }
-//        List<HanZi> hanZiList = getAppliction().getDaoManager().getTableZi().queryAllData();
+//        List<ChineseCharacter> hanZiList = getAppliction().getDaoManager().getTableZi().queryAllData();
 
-//        for (HanZi hanZi : hanZiList) {
+//        for (ChineseCharacter hanZi : hanZiList) {
 //            new TaskSpellingRead(hanZi.linkUrl).run();
 //            new TaskZiParaphrase(hanZi).run();
 //        }

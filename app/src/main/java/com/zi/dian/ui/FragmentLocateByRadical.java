@@ -8,16 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.zi.dian.ControlApplication;
-import com.zi.dian.adapter.AdapterHanZi;
 import com.zi.dian.adapter.AdapterRadical;
 import com.zi.dian.adapter.AdapterRadicalStroke;
-import com.zi.dian.dao.model.HanZi;
-import com.zi.dian.dao.model.HanZiParaphrase;
 import com.zi.dian.dao.model.Radicals;
-import com.zi.dian.unitl.FileCopy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,15 +24,20 @@ import dian.zi.com.zidian.R;
  */
 public class FragmentLocateByRadical extends FragmentBase implements AdapterRadicalStroke.IModelRadicalsStroke, AdapterRadical.IModelRadicals {
 
+    private static final short CHINESE_CHARACTER_NUM = 10;
+    private static final short COLUMNS_TWO = 2;
+    private static final short COLUMNS_ONE = 1;
     private ListView list_view_radical_stroke;
-
     private GridView grid_view_radicals;
-
-
     private AdapterRadicalStroke adapterRadicalStroke;
 
     private AdapterRadical adapterRadical;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
 
+        }
+    };
 
     @Override
     public View loadViewLayout(LayoutInflater layoutInflater, ViewGroup container) {
@@ -58,10 +57,7 @@ public class FragmentLocateByRadical extends FragmentBase implements AdapterRadi
     @Override
     public void onResume() {
         super.onResume();
-//        getApplication().getController().requestRadicals();
-//        getApplication().getController().requestZi();
-//        getApplication().getController().requestRadicals();
-//        getApplication().getController().requestRadicals();
+
     }
 
     private void initLoadData() {
@@ -94,9 +90,9 @@ public class FragmentLocateByRadical extends FragmentBase implements AdapterRadi
     }
 
     @Override
-    public void refreshView(List str) {
+    public void refreshView(List list) {
         Message msg = new Message();
-        msg.obj = str;
+        msg.obj = list;
         handler.sendMessage(msg);
 
     }
@@ -104,10 +100,10 @@ public class FragmentLocateByRadical extends FragmentBase implements AdapterRadi
     @Override
     public void setOnclickListener(String stroke) {
         List<Radicals> radicalsList = getApplication().getDaoManager().getTableBS().getDataByStroke(stroke);
-        if (radicalsList != null && radicalsList.size() > 10) {
-            grid_view_radicals.setNumColumns(2);
+        if (radicalsList.size() > CHINESE_CHARACTER_NUM) {
+            grid_view_radicals.setNumColumns(COLUMNS_TWO);
         } else {
-            grid_view_radicals.setNumColumns(1);
+            grid_view_radicals.setNumColumns(COLUMNS_ONE);
         }
         adapterRadical = new AdapterRadical(getActivity(), this, radicalsList);
 
@@ -117,17 +113,9 @@ public class FragmentLocateByRadical extends FragmentBase implements AdapterRadi
 
     @Override
     public void setOnclickListener(Radicals radicals) {
-        Intent intent = new Intent(getActivity(), ActivityHanZi.class);
+        Intent intent = new Intent(getActivity(), ActivityChineseCharacter.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("radicals", radicals);
         getApplication().startActivity(intent);
     }
-
-
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-
-        }
-    };
 }

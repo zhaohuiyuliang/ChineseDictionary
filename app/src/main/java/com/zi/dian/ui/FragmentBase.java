@@ -24,7 +24,7 @@ public abstract class FragmentBase extends Fragment {
 
     }
 
-    ControlApplication getApplication() {
+    protected ControlApplication getApplication() {
         return ControlApplication.getApplication();
     }
 

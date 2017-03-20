@@ -2,8 +2,8 @@ package com.zi.dian.net;
 
 import android.util.Log;
 
-import com.zi.dian.dao.model.HanZi;
-import com.zi.dian.dao.model.HanZiParaphrase;
+import com.zi.dian.dao.model.ChineseCharacter;
+import com.zi.dian.dao.model.ChineseCharacterParaphrase;
 
 import org.htmlparser.Node;
 import org.htmlparser.Parser;
@@ -21,16 +21,16 @@ import java.util.List;
  */
 public class TaskZiParaphrase extends LoadData {
     private String TAG = "TaskZiParaphrase";
-    private HanZi hanZi;
+    private ChineseCharacter mChineseCharacter;
 
-    public TaskZiParaphrase(HanZi hanZi) {
-        url = hanZi.linkUrl;
-        this.hanZi = hanZi;
+    public TaskZiParaphrase(ChineseCharacter chineseCharacter) {
+        url = chineseCharacter.linkUrl;
+        this.mChineseCharacter = chineseCharacter;
     }
 
     @Override
     public void run() {
-        HanZiParaphrase hanZiParaphrase = parserBS();
+        ChineseCharacterParaphrase hanZiParaphrase = parserBS();
         if (getAppliction().getDaoManager().getTableZiParaphrase().isData(hanZiParaphrase)) {
 
             getAppliction().getDaoManager().getTableZiParaphrase().updateData(hanZiParaphrase);
@@ -44,9 +44,9 @@ public class TaskZiParaphrase extends LoadData {
 
     }
 
-    private HanZiParaphrase parserBS() {
+    private ChineseCharacterParaphrase parserBS() {
 //        List<String> listZiStroke = parserZi();
-        HanZiParaphrase hanZiList = parserZiParaphrase();
+        ChineseCharacterParaphrase hanZiList = parserZiParaphrase();
         return hanZiList;
     }
 
@@ -77,14 +77,14 @@ public class TaskZiParaphrase extends LoadData {
         return pTitleList;
     }
 
-    private HanZiParaphrase parserZiParaphrase() {
-        HanZiParaphrase hanZiParaphrase = new HanZiParaphrase();
+    private ChineseCharacterParaphrase parserZiParaphrase() {
+        ChineseCharacterParaphrase hanZiParaphrase = new ChineseCharacterParaphrase();
         hanZiParaphrase.baseParaphrase = parserZiBaseParaphrase();
         hanZiParaphrase.detailedParaphrase = parserZiDetailedParaphrase();
-        hanZiParaphrase.radical = hanZi.radical;
-        hanZiParaphrase.stroke = hanZi.stroke;
-        hanZiParaphrase.zi = hanZi.zi;
-        hanZiParaphrase.spelling = hanZi.spelling;
+        hanZiParaphrase.radical = mChineseCharacter.radical;
+        hanZiParaphrase.stroke = mChineseCharacter.stroke;
+        hanZiParaphrase.zi = mChineseCharacter.zi;
+        hanZiParaphrase.spelling = mChineseCharacter.spelling;
         return hanZiParaphrase;
     }
 

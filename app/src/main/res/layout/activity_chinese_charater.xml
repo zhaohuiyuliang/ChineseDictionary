@@ -7,7 +7,7 @@
     <include layout="@layout/top_bar" />
 
     <GridView
-        android:id="@+id/grid_view_zi"
+        android:id="@+id/grid_view_chinese_character"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
@@ -18,7 +18,7 @@
         android:verticalSpacing="10dp" />
 
     <ListView
-        android:id="@+id/list_view_hanzi_and_stroke"
+        android:id="@+id/list_view_chinese_character_and_stroke"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="#ffffffff"

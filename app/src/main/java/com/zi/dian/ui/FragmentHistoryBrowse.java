@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.zi.dian.ControlApplication;
 import com.zi.dian.adapter.AdapterContent;
 import com.zi.dian.dao.TableHistoryZi;
-import com.zi.dian.dao.model.HanZiParaphrase;
+import com.zi.dian.dao.model.ChineseCharacterParaphrase;
 import com.zi.dian.dao.model.HistoryZi;
 
 import java.util.List;
@@ -20,7 +20,7 @@ import dian.zi.com.zidian.R;
 /**
  * Created by wangliang on 6/24/16.
  */
-public class FragmentHistoryFind extends FragmentBase implements AdapterContent.IModelContent {
+public class FragmentHistoryBrowse extends FragmentBase implements AdapterContent.IModelContent {
     private GridView grid_view_history;
     private AdapterContent adapterContent;
     private TextView tv_clear_history;
@@ -64,8 +64,8 @@ public class FragmentHistoryFind extends FragmentBase implements AdapterContent.
     public void setOnclickListener(String zi) {
         Intent intent = new Intent(getActivity(), ActivityHanZiDetail.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        HanZiParaphrase hanZiParaphrase = ControlApplication.getApplication().getDaoManager().getTableZiParaphrase().queryDataByZi(zi);
-        intent.putExtra("HanZiParaphrase", hanZiParaphrase);
+        ChineseCharacterParaphrase hanZiParaphrase = ControlApplication.getApplication().getDaoManager().getTableZiParaphrase().queryDataByZi(zi);
+        intent.putExtra("ChineseCharacterParaphrase", hanZiParaphrase);
         getApplication().startActivity(intent);
     }
 

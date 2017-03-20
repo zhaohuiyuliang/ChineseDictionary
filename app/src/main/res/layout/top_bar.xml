@@ -42,7 +42,6 @@
         android:text="收藏"
         android:gravity="center"
         android:textColor="@color/colorWhite"
-        android:textSize="18dp"
         android:visibility="gone" />
 
 

@@ -3,7 +3,6 @@ package com.zi.dian.net;
 import android.util.Log;
 
 import com.zi.dian.dao.TablePyRead;
-import com.zi.dian.dao.model.HanZi;
 import com.zi.dian.dao.model.PyRead;
 
 import org.htmlparser.Node;
@@ -11,16 +10,11 @@ import org.htmlparser.Parser;
 import org.htmlparser.filters.AndFilter;
 import org.htmlparser.filters.HasAttributeFilter;
 import org.htmlparser.filters.TagNameFilter;
-import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by wangliang on 6/20/16.

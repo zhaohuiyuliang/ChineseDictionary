@@ -3,7 +3,7 @@ package com.zi.dian.dao.model;
 /**
  * Created by wangliang on 6/27/16.
  */
-public class CollectZi extends HanZi {
+public class CollectZi extends ChineseCharacter {
     public String collect = "";
 
     public CollectZi(String zi, String collect) {

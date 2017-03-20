@@ -10,11 +10,13 @@ import android.util.Log;
  */
 public class ZDDatabaseUtils extends SQLiteOpenHelper {
     private static String loggerName = "ZDDatabaseUtils";
-
-
-    public SQLiteDatabase mDatabase = null;
-
     private static ZDDatabaseUtils sql;
+    private SQLiteDatabase mDatabase = null;
+
+
+    private ZDDatabaseUtils(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
+    }
 
     public static synchronized ZDDatabaseUtils getInstance(Context con) {
         if (sql == null) {
@@ -36,11 +38,6 @@ public class ZDDatabaseUtils extends SQLiteOpenHelper {
         mDatabase.close();
         mDatabase = null;
     }
-
-    private ZDDatabaseUtils(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-    }
-
 
     @Override
     public void onCreate(SQLiteDatabase db) {

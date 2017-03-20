@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 import com.zi.dian.dao.impl.ZDDatabaseUtils;
-import com.zi.dian.dao.model.HanZi;
 import com.zi.dian.dao.model.LetterSpelling;
 
 import java.util.ArrayList;

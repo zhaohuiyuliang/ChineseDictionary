@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.zi.dian.dao.model.HanZi;
+import com.zi.dian.dao.model.ChineseCharacter;
 
 import java.util.List;
 
@@ -17,17 +17,17 @@ import dian.zi.com.zidian.R;
  * Created by wangliang on 6/16/16.
  */
 public class AdapterHanZi extends BaseAdapter {
-    private List<HanZi> list;
+    private List<ChineseCharacter> list;
     private Context mContext;
     private IModelHanZi localModel;
 
-    public AdapterHanZi(Context context, IModelHanZi model, List<HanZi> list) {
+    public AdapterHanZi(Context context, IModelHanZi model, List<ChineseCharacter> list) {
         mContext = context;
         localModel = model;
         this.list = list;
     }
 
-    public void setData(List<HanZi> list) {
+    public void setData(List<ChineseCharacter> list) {
         this.list = list;
         notifyDataSetChanged();
     }
@@ -59,18 +59,18 @@ public class AdapterHanZi extends BaseAdapter {
         HoldView localHoldView;
         if (convertView == null) {
             localHoldView = new HoldView();
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_hanzi, null);
-            localHoldView.tv_ = (TextView) convertView.findViewById(R.id.tv_hanzi);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_chinese_character, null);
+            localHoldView.tv_ = (TextView) convertView.findViewById(R.id.tv_chinese_character);
             convertView.setTag(localHoldView);
         } else {
             localHoldView = (HoldView) convertView.getTag();
         }
-        final HanZi hanZi = list.get(position);
-        localHoldView.tv_.setText(hanZi.zi);
+        final ChineseCharacter chineseCharacter = list.get(position);
+        localHoldView.tv_.setText(chineseCharacter.zi);
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                localModel.setOnclickListener(hanZi);
+                localModel.setOnclickListener(chineseCharacter);
             }
         });
         if (selectPosition == position) {
@@ -86,7 +86,7 @@ public class AdapterHanZi extends BaseAdapter {
     }
 
     public interface IModelHanZi {
-        void setOnclickListener(HanZi hanZi);
+        void setOnclickListener(ChineseCharacter chineseCharacter);
     }
 
 }
