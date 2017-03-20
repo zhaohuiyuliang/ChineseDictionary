@@ -11,11 +11,11 @@ import com.zi.dian.dao.impl.ZDDatabaseUtils;
 import com.zi.dian.dao.model.LetterSpelling;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 /**
  * Created by wangliang on 6/24/16.
@@ -88,7 +88,7 @@ public class TableLetter {
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         Cursor cursor = database.query("table_letter_spelling", null, null, null, null, null, null);
         if (cursor != null && cursor.moveToFirst()) {
-            Set set = new HashSet();
+            Set set = new TreeSet();
             while (!cursor.isAfterLast()) {
                 set.add(cursor.getString(0));
                 cursor.moveToNext();

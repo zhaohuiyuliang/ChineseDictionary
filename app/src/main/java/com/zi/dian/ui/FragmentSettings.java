@@ -1,9 +1,6 @@
 package com.zi.dian.ui;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.zi.dian.unitl.PreferenceUtil;
@@ -20,18 +17,17 @@ public class FragmentSettings extends FragmentBase implements View.OnClickListen
     private TextView tv_xinhua_cidian;
 
     @Override
-    public View loadViewLayout(LayoutInflater layoutInflater, ViewGroup viewGroup) {
-        view = layoutInflater.inflate(R.layout.fragment_settings, viewGroup, false);
-        initView();
-        loadData();
-        return view;
+    public int getResLayout() {
+        return R.layout.fragment_settings;
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         tv_baidu_hanyu = (TextView) view.findViewById(R.id.tv_baidu_hanyu);
         tv_xinhua_cidian = (TextView) view.findViewById(R.id.tv_xinhua_cidian);
         tv_baidu_hanyu.setOnClickListener(this);
         tv_xinhua_cidian.setOnClickListener(this);
+        loadData();
     }
 
     private void loadData() {

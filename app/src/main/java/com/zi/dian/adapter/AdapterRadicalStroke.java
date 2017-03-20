@@ -28,15 +28,16 @@ public class AdapterRadicalStroke extends BaseCAdapter<String> {
     @Override
     protected void setData(final String localT, HoldView holdView, final int position) {
         holdView.setText(R.id.tv_radical_stroke, localT);
-        if (localModel != null) {
-            holdView.setOnClickListener(R.id.tv_radical_stroke, new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    setPosition(position);
+
+        holdView.setOnClickListener(R.id.tv_radical_stroke, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setPosition(position);
+                if (localModel != null) {
                     localModel.setOnclickListener("部首笔画数" + localT);
                 }
-            });
-        }
+            }
+        });
         if (selectPosition == position) {
             holdView.setTextColor(R.id.tv_radical_stroke, R.color.colorRed);
         } else {

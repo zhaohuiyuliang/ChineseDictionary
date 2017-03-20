@@ -1,9 +1,7 @@
 package com.zi.dian.ui;
 
 import android.content.Intent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -20,7 +18,7 @@ import dian.zi.com.zidian.R;
 /**
  * Created by wangliang on 6/24/16.
  */
-public class FragmentCollection extends FragmentBase implements AdapterContent.IModelContent{
+public class FragmentCollection extends FragmentBase implements AdapterContent.IModelContent {
     private GridView grid_view_collect;
     private AdapterContent adapterContent;
     private TextView tv_clear_collect;
@@ -33,14 +31,12 @@ public class FragmentCollection extends FragmentBase implements AdapterContent.I
     }
 
     @Override
-    public View loadViewLayout(LayoutInflater layoutInflater, ViewGroup viewGroup) {
-        view = layoutInflater.inflate(R.layout.fragment_collection, viewGroup, false);
-        initView();
-        getApplication().setFragmentBase(this);
-        return view;
+    public int getResLayout() {
+        return R.layout.fragment_collection;
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         grid_view_collect = (GridView) view.findViewById(R.id.grid_view_collection);
 
         tv_clear_collect = (TextView) view.findViewById(R.id.tv_clear_collect);
@@ -57,7 +53,7 @@ public class FragmentCollection extends FragmentBase implements AdapterContent.I
     private void initLoadData() {
         TableCollectZi tableUseZi = getApplication().getDaoManager().getTableCollectZi();
         List<CollectZi> useZiList = tableUseZi.queryData();
-        adapterContent = new AdapterContent(getActivity(), useZiList,this);
+        adapterContent = new AdapterContent(getActivity(), useZiList, this);
         grid_view_collect.setAdapter(adapterContent);
     }
 

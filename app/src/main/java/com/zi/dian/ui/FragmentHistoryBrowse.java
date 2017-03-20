@@ -1,9 +1,7 @@
 package com.zi.dian.ui;
 
 import android.content.Intent;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -25,12 +23,10 @@ public class FragmentHistoryBrowse extends FragmentBase implements AdapterConten
     private AdapterContent adapterContent;
     private TextView tv_clear_history;
 
+
     @Override
-    public View loadViewLayout(LayoutInflater layoutInflater, ViewGroup viewGroup) {
-        view = layoutInflater.inflate(R.layout.fragment_histroy_find, viewGroup, false);
-        initView();
-        getApplication().setFragmentBase(this);
-        return view;
+    public int getResLayout() {
+        return R.layout.fragment_histroy_find;
     }
 
 
@@ -40,7 +36,8 @@ public class FragmentHistoryBrowse extends FragmentBase implements AdapterConten
         initLoadData();
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         grid_view_history = (GridView) view.findViewById(R.id.grid_view_history);
         tv_clear_history = (TextView) view.findViewById(R.id.tv_clear_history);
         tv_clear_history.setOnClickListener(new View.OnClickListener() {

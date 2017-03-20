@@ -3,9 +3,6 @@ package com.zi.dian.ui;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.zi.dian.adapter.AdapterStrokeOfHanZi;
@@ -22,18 +19,21 @@ import dian.zi.com.zidian.R;
 public class FragmentLocateByStroke extends FragmentBase implements AdapterStrokeOfHanZi.IModelHanZiStroke {
     private GridView grid_view_stroke;
     private AdapterStrokeOfHanZi adapterHanZiStroke;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+        }
+    };
 
     @Override
-    public View loadViewLayout(LayoutInflater layoutInflater, ViewGroup viewGroup) {
-        view = layoutInflater.inflate(R.layout.fragment_look_zi_by_stroke, viewGroup, false);
-        initView();
-        getApplication().setFragmentBase(this);
-        initLoadData();
-        return view;
+    public int getResLayout() {
+        return R.layout.fragment_look_zi_by_stroke;
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         grid_view_stroke = (GridView) view.findViewById(R.id.grid_view_stroke);
+        initLoadData();
     }
 
     private void initLoadData() {
@@ -58,11 +58,5 @@ public class FragmentLocateByStroke extends FragmentBase implements AdapterStrok
         intent.putExtra("stroke", stroke);
         getApplication().startActivity(intent);
     }
-
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-        }
-    };
 
 }

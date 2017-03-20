@@ -17,7 +17,8 @@ import java.util.List;
  */
 public abstract class FragmentBase extends Fragment {
 
-    View view;
+    protected View view;
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -36,8 +37,11 @@ public abstract class FragmentBase extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-         super.onCreateView(inflater, container, savedInstanceState);
-        return loadViewLayout(inflater,container );
+        super.onCreateView(inflater, container, savedInstanceState);
+        view = inflater.inflate(getResLayout(), container, false);
+        initView();
+        getApplication().setFragmentBase(this);
+        return view;
     }
 
     @Override
@@ -80,7 +84,9 @@ public abstract class FragmentBase extends Fragment {
         super.onDetach();
     }
 
-    public abstract View loadViewLayout(LayoutInflater layoutInflater, ViewGroup viewGroup);
+    public abstract int getResLayout();
+
+    protected abstract void initView();
 
     public abstract void refreshView(List<?> str);
 }

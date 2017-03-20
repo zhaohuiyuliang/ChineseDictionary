@@ -3,9 +3,6 @@ package com.zi.dian.ui;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ListView;
 
@@ -14,7 +11,9 @@ import com.zi.dian.adapter.AdapterRadicalStroke;
 import com.zi.dian.dao.model.Radicals;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import dian.zi.com.zidian.R;
 
@@ -38,20 +37,18 @@ public class FragmentLocateByRadical extends FragmentBase implements AdapterRadi
 
         }
     };
+    private Map<String, List<Radicals>> mStringListMap;
 
     @Override
-    public View loadViewLayout(LayoutInflater layoutInflater, ViewGroup container) {
-        view = layoutInflater.inflate(R.layout.fragment_look_zi_by_radical, container, false);
-        initView();
-        getApplication().setFragmentBase(this);
-        initLoadData();
-        return view;
+    public int getResLayout() {
+        return R.layout.fragment_look_zi_by_radical;
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         list_view_radical_stroke = (ListView) view.findViewById(R.id.list_view_radical_stroke);
         grid_view_radicals = (GridView) view.findViewById(R.id.grid_view_radicals);
-
+        initLoadData();
     }
 
     @Override
@@ -61,14 +58,7 @@ public class FragmentLocateByRadical extends FragmentBase implements AdapterRadi
     }
 
     private void initLoadData() {
-        adapterRadicalStroke = new AdapterRadicalStroke(getActivity(), this, null);
-        list_view_radical_stroke.setAdapter(adapterRadicalStroke);
-
-        adapterRadical = new AdapterRadical(getActivity(), this, null);
-
-        grid_view_radicals.setAdapter(adapterRadical);
-
-
+        mStringListMap = new HashMap<>();
         List<String> listStrokes = new ArrayList<>();
         listStrokes.add("一");
         listStrokes.add("二");
@@ -85,7 +75,14 @@ public class FragmentLocateByRadical extends FragmentBase implements AdapterRadi
         listStrokes.add("十三");
         listStrokes.add("十四");
         listStrokes.add("十五");
-        adapterRadicalStroke.setData(listStrokes);
+        adapterRadicalStroke = new AdapterRadicalStroke(getActivity(), this, listStrokes);
+        list_view_radical_stroke.setAdapter(adapterRadicalStroke);
+
+        adapterRadical = new AdapterRadical(getActivity(), null);
+
+        grid_view_radicals.setAdapter(adapterRadical);
+
+
         setOnclickListener("部首笔画数" + listStrokes.get(0));
     }
 
@@ -94,18 +91,21 @@ public class FragmentLocateByRadical extends FragmentBase implements AdapterRadi
         Message msg = new Message();
         msg.obj = list;
         handler.sendMessage(msg);
-
     }
 
     @Override
     public void setOnclickListener(String stroke) {
-        List<Radicals> radicalsList = getApplication().getDaoManager().getTableBS().getDataByStroke(stroke);
+        List<Radicals> radicalsList = mStringListMap.get(stroke);
+        if (radicalsList == null) {
+            radicalsList = getApplication().getDaoManager().getTableBS().getDataByStroke(stroke);
+            mStringListMap.put(stroke, radicalsList);
+        }
         if (radicalsList.size() > CHINESE_CHARACTER_NUM) {
             grid_view_radicals.setNumColumns(COLUMNS_TWO);
         } else {
             grid_view_radicals.setNumColumns(COLUMNS_ONE);
         }
-        adapterRadical = new AdapterRadical(getActivity(), this, radicalsList);
+        adapterRadical = new AdapterRadical(getActivity(), radicalsList);
 
         grid_view_radicals.setAdapter(adapterRadical);
 
