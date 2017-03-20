@@ -11,11 +11,11 @@ import com.zi.dian.dao.impl.ZDDatabaseUtils;
 import com.zi.dian.dao.model.LetterSpelling;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 /**
  * Created by wangliang on 6/24/16.
@@ -56,7 +56,7 @@ public class TableLetter {
     }
 
     public Map<String, List<LetterSpelling>> queryAllData() {
-        Map<String, List<LetterSpelling>> letterSpellingMap = new HashMap<>();
+        Map<String, List<LetterSpelling>> letterSpellingMap = new TreeMap<>();
         List<String> list = queryAllLetterData();
         for (String letter : list) {
             List<LetterSpelling> letterSpellingList = querySpellingByLetter(letter);
@@ -65,7 +65,7 @@ public class TableLetter {
         return letterSpellingMap;
     }
 
-    private List<LetterSpelling> querySpellingByLetter(String letter) {
+    public List<LetterSpelling> querySpellingByLetter(String letter) {
         List<LetterSpelling> letterSpellingList = new ArrayList<>();
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         Cursor cursor = database.query("table_letter_spelling", new String[]{"spelling", "linkUrl"}, "letter = ?", new String[]{letter}, null, null, null);
@@ -83,7 +83,7 @@ public class TableLetter {
 
     }
 
-    private List<String> queryAllLetterData() {
+    public List<String> queryAllLetterData() {
         List<String> ziList = new ArrayList<>();
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         Cursor cursor = database.query("table_letter_spelling", null, null, null, null, null, null);

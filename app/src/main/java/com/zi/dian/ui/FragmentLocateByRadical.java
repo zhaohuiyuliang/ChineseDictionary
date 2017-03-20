@@ -113,7 +113,7 @@ public class FragmentLocateByRadical extends FragmentBase implements AdapterRadi
 
     @Override
     public void setOnclickListener(Radicals radicals) {
-        Intent intent = new Intent(getActivity(), ActivityChineseCharacter.class);
+        Intent intent = new Intent(getActivity(), ActivityChineseCharacterByRadical.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("radicals", radicals);
         getApplication().startActivity(intent);

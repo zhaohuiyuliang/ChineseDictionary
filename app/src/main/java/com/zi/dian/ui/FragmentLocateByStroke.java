@@ -53,7 +53,7 @@ public class FragmentLocateByStroke extends FragmentBase implements AdapterStrok
 
     @Override
     public void setOnClickListener(int stroke) {
-        Intent intent = new Intent(getActivity(), ActivityChineseCharacter.class);
+        Intent intent = new Intent(getActivity(), ActivityChineseCharacterByStroke.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("stroke", stroke);
         getApplication().startActivity(intent);

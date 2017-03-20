@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.zi.dian.custom.view.MyGridView;
 import com.zi.dian.dao.model.ChineseCharacter;
-import com.zi.dian.ui.ActivityChineseCharacter;
+import com.zi.dian.ui.ActivityChineseCharacterBase;
 import com.zi.dian.unitl.QuickSort;
 
 import java.util.ArrayList;
@@ -81,7 +81,7 @@ public class AdapterHanZiAndStroke extends BaseAdapter {
         }
         Integer stroke = keys1.get(position);
         localHoldView.tv_hanzi_stroke.setText("   笔画数：" + stroke);
-        localHoldView.adapterHanZi = new AdapterHanZi(context, (ActivityChineseCharacter) context, null);
+        localHoldView.adapterHanZi = new AdapterHanZi(context, (ActivityChineseCharacterBase) context, null);
         localHoldView.grid_view_zi.setAdapter(localHoldView.adapterHanZi);
         localHoldView.adapterHanZi.setData(listMap.get(stroke));
         return convertView;
