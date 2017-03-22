@@ -53,7 +53,7 @@ public class ActivitySpellingZiStroke extends ActivityBase implements AdapterSpe
 
     @Override
     public void setOnclickListener(SpellingZi spellingZi) {
-        Intent intent = new Intent(this, ActivityHanZiDetail.class);
+        Intent intent = new Intent(this, ActivityChineseCharacterDetail.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         ChineseCharacterParaphrase hanZiParaphrase = ControlApplication.getApplication().getDaoManager().getTableZiParaphrase().queryDataByZi(spellingZi.zi);
         intent.putExtra("ChineseCharacterParaphrase", hanZiParaphrase);

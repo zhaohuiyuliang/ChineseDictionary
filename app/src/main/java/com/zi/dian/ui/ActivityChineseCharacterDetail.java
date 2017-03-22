@@ -20,7 +20,7 @@ import dian.zi.com.zidian.R;
 /**
  * Created by wangliang on 6/17/16.
  */
-public class ActivityHanZiDetail extends ActivityBase implements View.OnClickListener {
+public class ActivityChineseCharacterDetail extends ActivityBase implements View.OnClickListener {
     private ChineseCharacterParaphrase hanZi;
     private TextView tv_hanzi_;
     private TextView tv_spelling_;

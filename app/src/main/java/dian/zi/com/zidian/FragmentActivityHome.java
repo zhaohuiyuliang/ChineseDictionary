@@ -4,14 +4,12 @@ import android.annotation.TargetApi;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.zi.dian.adapter.AdapterViewPagerHome;
@@ -64,18 +62,7 @@ public class FragmentActivityHome extends AppCompatActivity implements
     @TargetApi(23)
     private void initView() {
         view_pager_home = (ViewPagerHome) findViewById(R.id.view_pager_home);
-        view_pager_home.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
-            }
-
-        });
-        view_pager_home.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
+        view_pager_home.setPageSelected(new ViewPagerHome.OnPageChangeListener() {
 
             @Override
             public void onPageSelected(int position) {
@@ -93,10 +80,6 @@ public class FragmentActivityHome extends AppCompatActivity implements
                 }
             }
 
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
         });
     }
 

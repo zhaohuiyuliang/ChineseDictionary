@@ -59,7 +59,7 @@ public class FragmentCollection extends FragmentBase implements AdapterContent.I
 
     @Override
     public void setOnclickListener(String zi) {
-        Intent intent = new Intent(getActivity(), ActivityHanZiDetail.class);
+        Intent intent = new Intent(getActivity(), ActivityChineseCharacterDetail.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         ChineseCharacterParaphrase hanZiParaphrase = ControlApplication.getApplication().getDaoManager().getTableZiParaphrase().queryDataByZi(zi);
         intent.putExtra("ChineseCharacterParaphrase", hanZiParaphrase);

@@ -60,7 +60,7 @@ public abstract class ActivityChineseCharacterBase extends ActivityBase implemen
 
     @Override
     public void setOnclickListener(ChineseCharacter chineseCharacter) {
-        Intent intent = new Intent(this, ActivityHanZiDetail.class);
+        Intent intent = new Intent(this, ActivityChineseCharacterDetail.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         ChineseCharacterParaphrase hanZiParaphrase = ControlApplication.getApplication().getDaoManager().getTableZiParaphrase().queryDataByZi(chineseCharacter.zi);
         intent.putExtra("ChineseCharacterParaphrase", hanZiParaphrase);

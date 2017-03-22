@@ -78,7 +78,7 @@ public class FragmentLocateByRadical extends FragmentBase implements AdapterRadi
         adapterRadicalStroke = new AdapterRadicalStroke(getActivity(), this, listStrokes);
         list_view_radical_stroke.setAdapter(adapterRadicalStroke);
 
-        adapterRadical = new AdapterRadical(getActivity(), null);
+        adapterRadical = new AdapterRadical(getActivity(), null, this);
 
         grid_view_radicals.setAdapter(adapterRadical);
 
@@ -105,7 +105,7 @@ public class FragmentLocateByRadical extends FragmentBase implements AdapterRadi
         } else {
             grid_view_radicals.setNumColumns(COLUMNS_ONE);
         }
-        adapterRadical = new AdapterRadical(getActivity(), radicalsList);
+        adapterRadical = new AdapterRadical(getActivity(), radicalsList, this);
 
         grid_view_radicals.setAdapter(adapterRadical);
 

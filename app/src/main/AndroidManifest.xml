@@ -3,13 +3,10 @@
           package="dian.zi.com.zidian"
           android:versionCode="2"
           android:versionName="@string/version_name">
-
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-
-
+    <!--standard 默认模式，每次启动Activity都会创建一个Activity实例-->
+    <!--singleTop 如果栈中已经存在Activity并且不在栈顶的时候，如果再次启动该Activity时，则会创建新的Activity。-->
+    <!--singTask-->
+    <!--singleInstance -->
     <application
         android:name="com.zi.dian.ControlApplication"
         android:allowBackup="true"
@@ -19,6 +16,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SplashActivity"
+            android:launchMode="singleInstance"
             android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -29,7 +27,7 @@
         <activity
             android:name=".FragmentActivityHome"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name="com.zi.dian.ui.ActivityHanZiDetail"/>
+        <activity android:name="com.zi.dian.ui.ActivityChineseCharacterDetail"/>
         <activity android:name="com.zi.dian.ui.ActivityChineseCharacterByRadical"/>
         <activity android:name="com.zi.dian.ui.ActivityChineseCharacterByStroke"/>
         <activity android:name="com.zi.dian.ui.ActivitySpellingZiStroke"/>
