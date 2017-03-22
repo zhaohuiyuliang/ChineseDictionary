@@ -56,6 +56,39 @@ public class ActivityChineseCharacterDetail extends AppCompatActivity implements
         loadData();
     }
 
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
     protected void initView() {
         tv_collect = (TextView) findViewById(R.id.tv_collect);
         mViewPagerHome = (ViewPagerHome) findViewById(R.id.view_pager_explain);
@@ -162,8 +195,8 @@ public class ActivityChineseCharacterDetail extends AppCompatActivity implements
                 tv_detail.setTextColor(getResources().getColor(R.color.colorBlack));
                 tv_dh.setTextColor(getResources().getColor(R.color.colorBlack));
                 mViewPagerHome.setCurrentItem(0);
+                break;
             }
-            break;
             case R.id.tv_detail: {
 
                 tv_base.setTextColor(getResources().getColor(R.color.colorBlack));

@@ -27,11 +27,19 @@
         <activity
             android:name=".FragmentActivityHome"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name="com.zi.dian.ui.ActivityChineseCharacterDetail"
-                  android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name="com.zi.dian.ui.ActivityChineseCharacterByRadical"/>
-        <activity android:name="com.zi.dian.ui.ActivityChineseCharacterByStroke"/>
-        <activity android:name="com.zi.dian.ui.ActivitySpellingZiStroke"/>
+        <activity
+            android:name="com.zi.dian.ui.ActivityChineseCharacterDetail"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name="com.zi.dian.ui.ActivityChineseCharacterByRadical"
+            android:launchMode="singleTop"/>
+        <activity
+            android:name="com.zi.dian.ui.ActivityChineseCharacterByStroke"
+            android:launchMode="singleTop"/>
+        <activity
+            android:name="com.zi.dian.ui.ActivitySpellingZiStroke"
+            android:launchMode="singleTop"/>
     </application>
 
 </manifest>

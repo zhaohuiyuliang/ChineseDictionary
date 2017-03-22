@@ -1,7 +1,6 @@
 package com.zi.dian.ui.fragment;
 
 import android.content.Intent;
-import android.view.View;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -33,22 +32,22 @@ public class FragmentCollection extends FragmentBase implements AdapterContent.I
 
     @Override
     public int getResLayout() {
-        return R.layout.fragment_collection;
+        return R.layout.fragment_look_zi_by_stroke;
     }
 
     @Override
     protected void initView() {
-        grid_view_collect = (GridView) view.findViewById(R.id.grid_view_collection);
+        grid_view_collect = (GridView) view.findViewById(R.id.grid_view_stroke);
 
-        tv_clear_collect = (TextView) view.findViewById(R.id.tv_clear_collect);
-        tv_clear_collect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TableCollectZi tableUseZi = getApplication().getDaoManager().getTableCollectZi();
-                tableUseZi.clearTable();
-                initLoadData();
-            }
-        });
+//        tv_clear_collect = (TextView) view.findViewById(R.id.tv_clear_collect);
+//        tv_clear_collect.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                TableCollectZi tableUseZi = getApplication().getDaoManager().getTableCollectZi();
+//                tableUseZi.clearTable();
+//                initLoadData();
+//            }
+//        });
     }
 
     private void initLoadData() {

@@ -1,7 +1,6 @@
 package com.zi.dian.ui.fragment;
 
 import android.content.Intent;
-import android.view.View;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -27,7 +26,7 @@ public class FragmentHistoryBrowse extends FragmentBase implements AdapterConten
 
     @Override
     public int getResLayout() {
-        return R.layout.fragment_histroy_find;
+        return R.layout.fragment_look_zi_by_stroke;
     }
 
 
@@ -39,16 +38,16 @@ public class FragmentHistoryBrowse extends FragmentBase implements AdapterConten
 
     @Override
     protected void initView() {
-        grid_view_history = (GridView) view.findViewById(R.id.grid_view_history);
-        tv_clear_history = (TextView) view.findViewById(R.id.tv_clear_history);
-        tv_clear_history.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TableHistoryZi tableUseZi = getApplication().getDaoManager().getTableHistroyZi();
-                tableUseZi.clearTable();
-                initLoadData();
-            }
-        });
+        grid_view_history = (GridView) view.findViewById(R.id.grid_view_stroke);
+//        tv_clear_history = (TextView) view.findViewById(R.id.tv_clear_history);
+//        tv_clear_history.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                TableHistoryZi tableUseZi = getApplication().getDaoManager().getTableHistroyZi();
+//                tableUseZi.clearTable();
+//                initLoadData();
+//            }
+//        });
     }
 
     private void initLoadData() {

@@ -71,6 +71,8 @@ public class FragmentActivityHome extends AppCompatActivity implements
     @Override
     protected void onResume() {
         super.onResume();
+        int taskId = getTaskId();
+        Toast.makeText(this, "FragmentActivityHome taskID is " + taskId, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -92,14 +94,14 @@ public class FragmentActivityHome extends AppCompatActivity implements
     private void initView() {
         view_pager_home = (ViewPagerHome) findViewById(R.id.view_pager_home);
         fragmentLookByRadical = new FragmentLocateByRadical();
-        fragmentLookByStroke = new FragmentLocateByStroke();
         fragmentLookBySpelling = new FragmentLocateBySpelling();
+        fragmentLookByStroke = new FragmentLocateByStroke();
         mFragmentHistoryBrowse = new FragmentHistoryBrowse();
         fragmentCollection = new FragmentCollection();
         List<FragmentBase> fragmentBaseList = new ArrayList<>();
         fragmentBaseList.add(fragmentLookByRadical);
-        fragmentBaseList.add(fragmentLookByStroke);
         fragmentBaseList.add(fragmentLookBySpelling);
+        fragmentBaseList.add(fragmentLookByStroke);
         fragmentBaseList.add(mFragmentHistoryBrowse);
         fragmentBaseList.add(fragmentCollection);
         adapterViewPagerHome = new AdapterViewPagerHome(getSupportFragmentManager(), fragmentBaseList);
@@ -113,9 +115,9 @@ public class FragmentActivityHome extends AppCompatActivity implements
                 if (position == 0) {
                     toolbar.setTitle("部首查字");
                 } else if (position == 1) {
-                    toolbar.setTitle("笔画查字");
-                } else if (position == 2) {
                     toolbar.setTitle("拼音查字");
+                } else if (position == 2) {
+                    toolbar.setTitle("笔画查字");
                 } else if (position == 3) {
                     toolbar.setTitle("浏览历史");
                 } else if (position == 4) {
