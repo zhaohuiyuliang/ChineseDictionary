@@ -1,4 +1,4 @@
-package com.zi.dian.ui;
+package com.zi.dian.ui.fragment;
 
 import android.content.Intent;
 import android.widget.GridView;
@@ -8,6 +8,7 @@ import com.zi.dian.adapter.AdapterLetter;
 import com.zi.dian.adapter.AdapterSpelling;
 import com.zi.dian.dao.TableLetter;
 import com.zi.dian.dao.model.LetterSpelling;
+import com.zi.dian.ui.ActivitySpellingZiStroke;
 
 import java.util.HashMap;
 import java.util.List;

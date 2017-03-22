@@ -1,4 +1,4 @@
-package com.zi.dian.ui;
+package com.zi.dian.ui.fragment;
 
 import android.view.View;
 import android.widget.TextView;

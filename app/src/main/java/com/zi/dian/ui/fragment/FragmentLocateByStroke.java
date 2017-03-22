@@ -1,4 +1,4 @@
-package com.zi.dian.ui;
+package com.zi.dian.ui.fragment;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -7,6 +7,7 @@ import android.widget.GridView;
 
 import com.zi.dian.adapter.AdapterStrokeOfHanZi;
 import com.zi.dian.dao.TableZi;
+import com.zi.dian.ui.ActivityChineseCharacterByStroke;
 
 import java.util.List;
 

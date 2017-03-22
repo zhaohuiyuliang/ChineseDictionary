@@ -5,7 +5,7 @@ import android.os.Process;
 
 import com.zi.dian.dao.impl.DaoManager;
 import com.zi.dian.net.Controller;
-import com.zi.dian.ui.FragmentBase;
+import com.zi.dian.ui.fragment.FragmentBase;
 import com.zi.dian.util.Logger;
 
 /**

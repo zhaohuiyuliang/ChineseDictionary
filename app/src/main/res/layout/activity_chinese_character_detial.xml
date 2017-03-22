@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <include layout="@layout/top_bar" />
+    <include layout="@layout/top_bar"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="20dp"
-            android:src="@drawable/background_chinese_character" />
+            android:src="@drawable/background_chinese_character"/>
 
         <TextView
             android:id="@+id/tv_chinese_character"
@@ -25,7 +25,7 @@
             android:gravity="center"
             android:text="临"
             android:textColor="@color/colorBlack"
-            android:textSize="20dp" />
+            android:textSize="20dp"/>
 
         <TextView
             android:id="@+id/tv_spelling_"
@@ -36,7 +36,7 @@
             android:drawablePadding="10dp"
             android:drawableRight="@drawable/video"
             android:gravity="center_vertical"
-            android:textSize="20dp" />
+            android:textSize="20dp"/>
 
         <TextView
             android:id="@+id/tv_spelling_2"
@@ -47,8 +47,8 @@
             android:drawablePadding="10dp"
             android:drawableRight="@drawable/video"
             android:gravity="center_vertical"
-            android:textSize="30dp"
-            android:visibility="gone" />
+            android:textSize="20dp"
+            android:visibility="gone"/>
 
 
         <LinearLayout
@@ -65,7 +65,7 @@
                 android:layout_weight="6"
                 android:gravity="center"
                 android:text="基本解释"
-                android:textSize="16dp" />
+                android:textSize="16dp"/>
 
             <TextView
                 android:id="@+id/tv_detail"
@@ -74,7 +74,7 @@
                 android:layout_weight="6"
                 android:gravity="center"
                 android:text="详细解释"
-                android:textSize="16dp" />
+                android:textSize="16dp"/>
 
             <TextView
                 android:id="@+id/tv_error_correction"
@@ -86,21 +86,12 @@
                 android:textSize="18dp"
                 android:visibility="gone"/>
 
-
         </LinearLayout>
 
-        <ScrollView
+        <com.zi.dian.custom.view.ViewPagerHome
+            android:id="@+id/view_pager_explain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/ll">
-
-            <TextView
-                android:id="@+id/tv_paraphrase"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:lineSpacingExtra="10dp"
-                android:focusableInTouchMode="false"/>
-        </ScrollView>
+            android:layout_below="@id/ll"/>
     </RelativeLayout>
 </LinearLayout>

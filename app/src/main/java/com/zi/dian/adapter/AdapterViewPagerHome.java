@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.zi.dian.ui.FragmentBase;
+import com.zi.dian.ui.fragment.FragmentBase;
 
 import java.util.List;
 

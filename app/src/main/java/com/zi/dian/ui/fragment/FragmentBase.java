@@ -1,4 +1,4 @@
-package com.zi.dian.ui;
+package com.zi.dian.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;

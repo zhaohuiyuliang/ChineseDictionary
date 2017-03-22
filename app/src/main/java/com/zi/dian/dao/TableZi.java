@@ -16,6 +16,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Created by wangliang on 6/14/16.
@@ -89,7 +90,7 @@ public class TableZi {
      */
     public List<Integer> queryAllStroke() {
         List<Integer> strokeList = new ArrayList<>();
-        Set<Integer> integerSet = new HashSet<>();
+        Set<Integer> integerSet = new TreeSet<>();
         SQLiteDatabase database = ZDDatabaseUtils.getInstance(context).openDatabase();
         Cursor cursor = database.query("bs_zi_table", new String[]{"stroke"}, null, null, null, null, "stroke desc");
         if (cursor != null && cursor.moveToFirst()) {

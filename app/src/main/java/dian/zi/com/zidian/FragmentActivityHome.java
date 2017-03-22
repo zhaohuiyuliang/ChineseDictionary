@@ -14,12 +14,12 @@ import android.widget.Toast;
 
 import com.zi.dian.adapter.AdapterViewPagerHome;
 import com.zi.dian.custom.view.ViewPagerHome;
-import com.zi.dian.ui.FragmentBase;
-import com.zi.dian.ui.FragmentCollection;
-import com.zi.dian.ui.FragmentHistoryBrowse;
-import com.zi.dian.ui.FragmentLocateByRadical;
-import com.zi.dian.ui.FragmentLocateBySpelling;
-import com.zi.dian.ui.FragmentLocateByStroke;
+import com.zi.dian.ui.fragment.FragmentBase;
+import com.zi.dian.ui.fragment.FragmentCollection;
+import com.zi.dian.ui.fragment.FragmentHistoryBrowse;
+import com.zi.dian.ui.fragment.FragmentLocateByRadical;
+import com.zi.dian.ui.fragment.FragmentLocateBySpelling;
+import com.zi.dian.ui.fragment.FragmentLocateByStroke;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,12 +56,55 @@ public class FragmentActivityHome extends AppCompatActivity implements
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         initView();
-        initData();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     @TargetApi(23)
     private void initView() {
         view_pager_home = (ViewPagerHome) findViewById(R.id.view_pager_home);
+        fragmentLookByRadical = new FragmentLocateByRadical();
+        fragmentLookByStroke = new FragmentLocateByStroke();
+        fragmentLookBySpelling = new FragmentLocateBySpelling();
+        mFragmentHistoryBrowse = new FragmentHistoryBrowse();
+        fragmentCollection = new FragmentCollection();
+        List<FragmentBase> fragmentBaseList = new ArrayList<>();
+        fragmentBaseList.add(fragmentLookByRadical);
+        fragmentBaseList.add(fragmentLookByStroke);
+        fragmentBaseList.add(fragmentLookBySpelling);
+        fragmentBaseList.add(mFragmentHistoryBrowse);
+        fragmentBaseList.add(fragmentCollection);
+        adapterViewPagerHome = new AdapterViewPagerHome(getSupportFragmentManager(), fragmentBaseList);
+        view_pager_home.setAdapter(adapterViewPagerHome);
+
         view_pager_home.setPageSelected(new ViewPagerHome.OnPageChangeListener() {
 
             @Override
@@ -83,22 +126,6 @@ public class FragmentActivityHome extends AppCompatActivity implements
         });
     }
 
-    private void initData() {
-        fragmentLookByRadical = new FragmentLocateByRadical();
-        fragmentLookByStroke = new FragmentLocateByStroke();
-        fragmentLookBySpelling = new FragmentLocateBySpelling();
-        mFragmentHistoryBrowse = new FragmentHistoryBrowse();
-        fragmentCollection = new FragmentCollection();
-        List<FragmentBase> fragmentBaseList = new ArrayList<>();
-        fragmentBaseList.add(fragmentLookByRadical);
-        fragmentBaseList.add(fragmentLookByStroke);
-        fragmentBaseList.add(fragmentLookBySpelling);
-        fragmentBaseList.add(mFragmentHistoryBrowse);
-        fragmentBaseList.add(fragmentCollection);
-        adapterViewPagerHome = new AdapterViewPagerHome(getSupportFragmentManager(), fragmentBaseList);
-        view_pager_home.setAdapter(adapterViewPagerHome);
-
-    }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -128,18 +155,16 @@ public class FragmentActivityHome extends AppCompatActivity implements
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
             return true;
-        } else {
-            if (keyCode == KeyEvent.KEYCODE_BACK) {
-                if ((System.currentTimeMillis() - mExitTime) > 2000) {
-                    Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
-                    mExitTime = System.currentTimeMillis();
-                } else {
-                    finish();
-                }
-                return true;
+        } else if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                mExitTime = System.currentTimeMillis();
+            } else {
+                finish();
             }
-            return super.onKeyDown(keyCode, event);
+            return true;
         }
+        return super.onKeyDown(keyCode, event);
 
     }
 }

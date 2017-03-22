@@ -1,4 +1,4 @@
-package com.zi.dian.ui;
+package com.zi.dian.ui.fragment;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -9,6 +9,7 @@ import android.widget.ListView;
 import com.zi.dian.adapter.AdapterRadical;
 import com.zi.dian.adapter.AdapterRadicalStroke;
 import com.zi.dian.dao.model.Radicals;
+import com.zi.dian.ui.ActivityChineseCharacterByRadical;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -81,7 +82,6 @@ public class FragmentLocateByRadical extends FragmentBase implements AdapterRadi
         adapterRadical = new AdapterRadical(getActivity(), null, this);
 
         grid_view_radicals.setAdapter(adapterRadical);
-
 
         setOnclickListener("部首笔画数" + listStrokes.get(0));
     }
